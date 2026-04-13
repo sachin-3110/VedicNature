@@ -1,23 +1,36 @@
-# Vedic Nature E-commerce Application
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Welcome to the **Vedic Nature Frontend**! This project utilizes Next.js (React + TSX) to create a premium fragrance e-commerce experience.
+## Getting Started
 
-## Tracking Our Steps
+First, run the development server:
 
-*(This section will be continually updated as we progress through development)*
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-- [x] **Project Initialization:** Defined project vision, limits, and objectives in `.planning/PROJECT.md`.
-- [x] **Codebase Mapping:** Audited existing `design.html` reference and local asset states.
-- [ ] **Next.js Initialization:** Scaffold the Next.js App Router workspace using TSX and Tailwind CSS.
-- [ ] **Global Layout Generation:** Extract Navigation bar and Footer logic from `design.html` to establish persistent layout (`layout.tsx`).
-- [ ] **UI Component Extraction:** Modularize categories, hero features, and other components from `design.html` into independent modules.
-- [ ] **Dummy Pages Creation:** Map navigation elements to placeholder sub-pages (e.g., Shop, Collections, About) maintaining the core UX.
-- [ ] **Phase 2 - Custom CMS:** Integrate dynamic content fetching mechanism.
-- [ ] **Phase 2 - Razorpay Checkout:** Mount and design checkout workflow processing via Razorpay.
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-## Technical Details
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript (TSX)
-- **Styling:** Tailwind CSS
-- **Integrations:** Razorpay (Payments), Custom CMS (Data)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
