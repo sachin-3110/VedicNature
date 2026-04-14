@@ -13,7 +13,7 @@ export function FeaturedFragranceSection() {
             <Image
               alt="Signature Scent"
               className="w-full h-full object-contain p-12"
-              src="/Images/sandal-bliss.webp"
+              src="/vedicnaturecompressedimages/sandalblissperfume.webp"
               height={500}
               width={500}
             // fill

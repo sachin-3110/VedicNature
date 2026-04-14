@@ -71,7 +71,7 @@ export default function CollectionsPage() {
                     key={item.id}
                     className="group rounded-2xl flex flex-col gap-6 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)]"
                   >
-                    <div className="relative translate-y-20 group-hover:translate-y-0 h-full aspect-[4/5] bg-white rounded-2xl flex items-center justify-center p-2 overflow-hidden transition-all duration-500 shadow-[0_2px_10px_rgba(0,0,0,0.02)] group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
+                    <div className="relative md:translate-y-20 md:group-hover:translate-y-0 h-full aspect-[4/5] bg-white rounded-2xl flex items-center justify-center p-2 overflow-hidden transition-all duration-500 shadow-[0_2px_10px_rgba(0,0,0,0.02)] group-hover:shadow-[0_10px_30px_rgba(0,0,0,0.06)]">
                       <Image
                         src={item.image}
                         alt={item.name}

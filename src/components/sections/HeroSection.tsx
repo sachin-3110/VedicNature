@@ -23,13 +23,14 @@ export function HeroSection() {
             <Button variant="underline">View Journal</Button>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-12 lg:col-span-6 order-1 md:order-2 relative h-[600px] md:h-[650px]">
-          <div className="absolute inset-0 bg-surface-container-low rounded-lg translate-x-8 translate-y-8 -z-10"></div>
+        <div className=" col-span-12 md:col-span-12 lg:col-span-6 order-1 md:order-2 relative h-[600px] md:h-[650px]">
+          <div className=" absolute inset-0 bg-surface-container-low rounded-lg translate-x-8 translate-y-8 -z-10"></div>
           <Image
             alt="Luxury Perfume Bottle"
             className="h-full w-full object-cover"
-            src="/mogra-portrait.webp"
-            fill
+            src="/vedicnaturecompressedimages/mogra.jpg.webp"
+            width={500}
+            height={500}
             priority
             sizes="(max-width: 768px) 100vw,
          (max-width: 1200px) 50vw,(max-width: 2200px) 50vw,

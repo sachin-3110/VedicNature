@@ -9,7 +9,7 @@ export function CinematicVideoSection() {
         <Image 
           alt="Mist and Petals" 
           className="w-full h-full object-cover brightness-75"
-          src="/Images/mogra-landscape.webp" 
+          src="/vedicnaturecompressedimages/mogra.jpg.webp" 
           fill
         />
         <div className="absolute inset-0 bg-black/20"></div>

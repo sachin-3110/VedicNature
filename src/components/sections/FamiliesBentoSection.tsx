@@ -22,7 +22,7 @@ export function FamiliesBentoSection() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-8">
           <CategoryCard
-            imageSrc="/Images/lavender.webp"
+            imageSrc="/vedicnaturecompressedimages/lavenderattar.webp"
             imageAlt="Floral Notes"
             titleOverlay="Lavender"
             titleOverlayColor="purple"
@@ -35,7 +35,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-4 md:mt-24">
           <CategoryCard
-            imageSrc="/Images/mogra-landscape.webp"
+            imageSrc="/vedicnaturecompressedimages/mogra.jpg.webp"
             imageAlt="Woody Notes"
             titleOverlay="MOGRA"
             titleOverlayColor="white"
@@ -47,7 +47,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-4">
           <CategoryCard
-            imageSrc="/Images/24-k-gold-oud.webp"
+            imageSrc="/vedicnaturecompressedimages/24kgold.webp"
             imageAlt="Oriental Notes"
             titleOverlay="24k Gold Oud"
             titleOverlayColor="#C3A466"
@@ -59,7 +59,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-8">
           <CategoryCard
-            imageSrc="/Images/real-kesar.webp"
+            imageSrc="/vedicnaturecompressedimages/realkesarattar.webp"
             imageAlt="Fresh Notes"
             titleOverlay="Real Kesar"
             titleOverlayColor="#A58F9A"
