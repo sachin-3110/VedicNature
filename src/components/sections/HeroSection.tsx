@@ -4,9 +4,9 @@ import { Button } from '@/components/ui/Button';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[921px] max-w-screen flex items-center pt-24 overflow-hidden">
-      <div className="mx-auto px-12 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-center max-w-screen-2xl">
-        <div className="col-span-12 md:col-span-5 order-1 md:order-2 pt-12 md:pt-0">
+    <section className="relative  max-w-screen flex items-center pt-24 overflow-hidden">
+      <div className="mx-auto md:px-6 w-full grid gap-2 grid-cols-1 md:grid-cols-12  items-center ">
+        <div className="col-span-12 px-6 lg:px-12 md:col-span-12 lg:col-span-6  order-1 md:order-2 pt-12 md:pt-0">
           <h2 className="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-6">
             L'Essence de la Nature
           </h2>
@@ -23,15 +23,17 @@ export function HeroSection() {
             <Button variant="underline">View Journal</Button>
           </div>
         </div>
-        <div className="col-span-12 md:col-span-7 order-1 md:order-2 relative h-[600px] md:h-[800px]">
+        <div className="col-span-12 md:col-span-12 lg:col-span-6 order-1 md:order-2 relative h-[600px] md:h-[650px]">
           <div className="absolute inset-0 bg-surface-container-low rounded-lg translate-x-8 translate-y-8 -z-10"></div>
-          <Image 
-            alt="Luxury Perfume Bottle" 
-            className="w-full h-full object-cover object-center shadow-2xl rounded-lg"
-            src="/Images/mogra-portrait.webp" 
+          <Image
+            alt="Luxury Perfume Bottle"
+            className="h-full w-full object-cover"
+            src="/mogra-portrait.webp"
             fill
             priority
-            sizes="(max-width: 768px) 100vw, 60vw"
+            sizes="(max-width: 768px) 100vw,
+         (max-width: 1200px) 50vw,(max-width: 2200px) 50vw,
+         33vw"
           />
         </div>
       </div>

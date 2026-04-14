@@ -1,660 +1,462 @@
 <!doctype html>
 <!DOCTYPE html>
 <html class="scroll-smooth" lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Vedic Nature | Silent Luxury Fragrance</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect" />
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;800&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
-      rel="stylesheet"
-    />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            colors: {
-              "on-tertiary-fixed-variant": "#304671",
-              "on-secondary": "#ffffff",
-              "on-primary": "#ffffff",
-              "surface-tint": "#5f5e5e",
-              "on-primary-fixed": "#1c1b1b",
-              "on-surface-variant": "#4e4639",
-              "tertiary-fixed-dim": "#b0c6f9",
-              "surface-container-high": "#ebe8e2",
-              "surface-container-low": "#f6f3ed",
-              "inverse-surface": "#31312d",
-              background: "#fcf9f3",
-              "surface-container-highest": "#e5e2dc",
-              "tertiary-fixed": "#d8e2ff",
-              "on-secondary-container": "#785a1a",
-              "primary-fixed-dim": "#c8c6c5",
-              "on-primary-container": "#3b3b3b",
-              primary: "#5f5e5e",
-              "on-tertiary-fixed": "#001a41",
-              "on-error": "#ffffff",
-              "secondary-container": "#fed488",
-              "error-container": "#ffdad6",
-              "surface-variant": "#e5e2dc",
-              "secondary-fixed-dim": "#e9c176",
-              "on-tertiary": "#ffffff",
-              "surface-dim": "#dcdad4",
-              "on-tertiary-container": "#233a65",
-              "outline-variant": "#d1c5b4",
-              "on-secondary-fixed": "#261900",
-              "on-secondary-fixed-variant": "#5d4201",
-              "inverse-primary": "#c8c6c5",
-              tertiary: "#485e8b",
-              outline: "#7f7667",
-              "on-surface": "#1c1c18",
-              "on-background": "#1c1c18",
-              "surface-bright": "#fcf9f3",
-              "on-primary-fixed-variant": "#474746",
-              "on-error-container": "#93000a",
-              secondary: "#775a19",
-              "tertiary-container": "#8fa5d6",
-              "primary-fixed": "#e5e2e1",
-              "surface-container": "#f0eee8",
-              "secondary-fixed": "#ffdea5",
-              "inverse-on-surface": "#f3f0ea",
-              surface: "#fcf9f3",
-              error: "#ba1a1a",
-              "primary-container": "#a7a5a4",
-              "surface-container-lowest": "#ffffff",
-            },
-            borderRadius: {
-              DEFAULT: "0.125rem",
-              lg: "0.25rem",
-              xl: "0.5rem",
-              full: "0.75rem",
-            },
-            fontFamily: {
-              headline: ["Noto Serif"],
-              body: ["Manrope"],
-              label: ["Manrope"],
-            },
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>Vedic Nature | Silent Luxury Fragrance</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&amp;family=Manrope:wght@300;400;500;600;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-tertiary-fixed-variant": "#304671",
+            "on-secondary": "#ffffff",
+            "on-primary": "#ffffff",
+            "surface-tint": "#5f5e5e",
+            "on-primary-fixed": "#1c1b1b",
+            "on-surface-variant": "#4e4639",
+            "tertiary-fixed-dim": "#b0c6f9",
+            "surface-container-high": "#ebe8e2",
+            "surface-container-low": "#f6f3ed",
+            "inverse-surface": "#31312d",
+            background: "#fcf9f3",
+            "surface-container-highest": "#e5e2dc",
+            "tertiary-fixed": "#d8e2ff",
+            "on-secondary-container": "#785a1a",
+            "primary-fixed-dim": "#c8c6c5",
+            "on-primary-container": "#3b3b3b",
+            primary: "#5f5e5e",
+            "on-tertiary-fixed": "#001a41",
+            "on-error": "#ffffff",
+            "secondary-container": "#fed488",
+            "error-container": "#ffdad6",
+            "surface-variant": "#e5e2dc",
+            "secondary-fixed-dim": "#e9c176",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#dcdad4",
+            "on-tertiary-container": "#233a65",
+            "outline-variant": "#d1c5b4",
+            "on-secondary-fixed": "#261900",
+            "on-secondary-fixed-variant": "#5d4201",
+            "inverse-primary": "#c8c6c5",
+            tertiary: "#485e8b",
+            outline: "#7f7667",
+            "on-surface": "#1c1c18",
+            "on-background": "#1c1c18",
+            "surface-bright": "#fcf9f3",
+            "on-primary-fixed-variant": "#474746",
+            "on-error-container": "#93000a",
+            secondary: "#775a19",
+            "tertiary-container": "#8fa5d6",
+            "primary-fixed": "#e5e2e1",
+            "surface-container": "#f0eee8",
+            "secondary-fixed": "#ffdea5",
+            "inverse-on-surface": "#f3f0ea",
+            surface: "#fcf9f3",
+            error: "#ba1a1a",
+            "primary-container": "#a7a5a4",
+            "surface-container-lowest": "#ffffff",
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem",
+          },
+          fontFamily: {
+            headline: ["Noto Serif"],
+            body: ["Manrope"],
+            label: ["Manrope"],
           },
         },
-      };
-    </script>
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 300,
-          "GRAD" 0,
-          "opsz" 24;
-        display: inline-block;
-        line-height: 1;
-      }
-      .editorial-grid {
-        display: grid;
-        grid-template-columns: repeat(12, 1fr);
-      }
-      body {
-        background-color: #fcf9f3;
-        color: #1c1c18;
-        font-family: "Manrope", sans-serif;
-      }
-    </style>
-  </head>
-  <body class="bg-background text-on-background antialiased">
-    <!-- TopAppBar -->
-    <header class="fixed top-0 w-full z-50 bg-[#fcf9f3]/70 backdrop-blur-md">
-      <nav
-        class="flex justify-between items-center sm:px-12 py-2 sm:w-full mx-auto"
-      >
-        <div class="flex items-center gap-12">
-          <div class="" style="height: 80px;">
-            <img src="https://d1311wbk6unapo.cloudfront.net/NushopWebsiteAsset/tr:w-300,,f-webp,fo-auto/69c3d389fc15e18cf00657fe_brand_logo_SF2BZYCGVP_2026-04-07.jpg" style="height: 100%;"  alt="logo">
-          </div>
-          <div class="hidden md:flex gap-8 items-center">
-            <a
-              class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#775a19] border-b border-[#775a19]/20 font-medium"
-              href="#"
-              style=""
-              >Collections</a
-            >
-            <a
-              class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] hover:text-[#775a19] transition-colors"
-              href="#"
-              style=""
-              >Shop</a
-            >
-            <a
-              class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] hover:text-[#775a19] transition-colors"
-              href="#"
-              style=""
-              >About</a
-            >
-          </div>
-        </div>
-        <div class="flex items-center gap-6">
-          <button
-            class="text-[#5f5e5e] hover:opacity-80 transition-opacity"
-            style=""
-          >
-            <span class="material-symbols-outlined" style="">search</span>
-          </button>
-          <button
-            class="text-[#5f5e5e] hover:opacity-80 transition-opacity relative"
-            style=""
-          >
-            <span class="material-symbols-outlined" style="">shopping_bag</span>
-            <span
-              class="absolute -top-1 -right-1 text-[8px] bg-secondary text-white w-3 h-3 flex items-center justify-center rounded-full"
-              style=""
-              >0</span
-            >
-          </button>
-        </div>
-      </nav>
-    </header>
-    <main class="">
-      <!-- Hero Section -->
-      <section
-        class="relative min-height-[921px] max-w-screen flex items-center pt-24 overflow-hidden"
-      >
-        <div
-          class=" mx-auto px-12 w-full editorial-grid gap-8 items-center"
-        >
-          <div
-            class="col-span-12 md:col-span-5 order-1 md:order-2 pt-12 md:pt-0"
-          >
-            <h2
-              class="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-6"
-              style=""
-            >
-              L'Essence de la Nature
-            </h2>
-            <h1
-              class="font-headline text-5xl md:text-7xl leading-[1.1] text-primary tracking-tighter mb-8 italic"
-              style=""
-            >
-              The Silent <br />Luxury of Scent
-            </h1>
-            <p
-              class="font-body text-on-surface-variant max-w-md mb-10 leading-relaxed opacity-80"
-              style=""
-            >
-              An editorial exploration of botanical purity and architectural
-              fragrance design. Crafted for those who find power in the quiet
-              moments.
-            </p>
-            <div class="flex items-center gap-8">
-              <button
-                class="bg-primary text-on-primary px-10 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-all active:scale-95 shadow-sm"
-                style=""
-              >
-                Discover Collection
-              </button>
-              <button class="group relative py-2 overflow-hidden" style="">
-                <span
-                  class="font-label text-[11px] uppercase tracking-[0.2em] text-primary"
-                  style=""
-                  >View Journal</span
-                >
-                <div
-                  class="absolute bottom-0 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"
-                ></div>
-              </button>
-            </div>
-          </div>
-          <div
-            class="col-span-12 md:col-span-7 order-1 md:order-2 relative h-[600px] md:h-[800px]"
-          >
-            <div
-              class="absolute inset-0 bg-surface-container-low rounded-lg translate-x-8 translate-y-8 -z-10"
-            ></div>
-            <img
-              alt="Luxury Perfume Bottle"
-              class="w-full h-full object-cover object-center shadow-2xl rounded-lg"
-              data-alt="Minimalist glass perfume bottle on a textured stone pedestal, soft natural morning light, cinematic shadows, high-end product photography style"
-              src="./Images/mogra-portrait.webp"
-              style=""
-            />
-          </div>
-        </div>
-      </section>
-      <!-- Video Section (Cinematic Essence) -->
-      <section
-        class="mt-32 relative h-[819px] w-full overflow-hidden flex items-center justify-center"
-      >
-        <div class="absolute inset-0 z-0">
+      },
+    };
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings:
+        "FILL" 0,
+        "wght" 300,
+        "GRAD" 0,
+        "opsz" 24;
+      display: inline-block;
+      line-height: 1;
+    }
+
+    .editorial-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    body {
+      background-color: #fcf9f3;
+      color: #1c1c18;
+      font-family: "Manrope", sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background antialiased">
+  <!-- TopAppBar -->
+  <header class="fixed top-0 w-full z-50 bg-[#fcf9f3]/70 backdrop-blur-md">
+    <nav class="flex justify-between items-center sm:px-12 py-2 sm:w-full mx-auto">
+      <div class="flex items-center gap-12">
+        <div class="" style="height: 80px;">
           <img
-            alt="Mist and Petals"
-            class="w-full h-full object-cover brightness-75"
-            data-alt="Cinematic slow motion shot of white flower petals falling through morning mist, soft golden hour lighting, ethereal and dreamy atmosphere"
-            src="./Images/mogra-landscape.webp"
-            style=""
-          />
-          <div class="absolute inset-0 bg-black/20"></div>
+            src="https://d1311wbk6unapo.cloudfront.net/NushopWebsiteAsset/tr:w-300,,f-webp,fo-auto/69c3d389fc15e18cf00657fe_brand_logo_SF2BZYCGVP_2026-04-07.jpg"
+            style="height: 100%;" alt="logo">
         </div>
-        <div class="relative z-10 text-center text-white max-w-3xl px-6">
+        <div class="hidden md:flex gap-8 items-center">
+          <a class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#775a19] border-b border-[#775a19]/20 font-medium"
+            href="#" style="">Collections</a>
+          <a class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] hover:text-[#775a19] transition-colors"
+            href="#" style="">Shop</a>
+          <a class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] hover:text-[#775a19] transition-colors"
+            href="#" style="">About</a>
+        </div>
+      </div>
+      <div class="flex items-center gap-6">
+        <button class="text-[#5f5e5e] hover:opacity-80 transition-opacity" style="">
+          <span class="material-symbols-outlined" style="">search</span>
+        </button>
+        <button class="text-[#5f5e5e] hover:opacity-80 transition-opacity relative" style="">
+          <span class="material-symbols-outlined" style="">shopping_bag</span>
           <span
-            class="material-symbols-outlined text-4xl mb-6 opacity-80"
-            style="font-variation-settings: &quot;wght&quot; 200"
-            >air</span
-          >
-          <h3
-            class="font-headline text-4xl md:text-6xl mb-8 tracking-tight italic"
-            style=""
-          >
-            A Symphony of Unspoken Words
-          </h3>
-          <p
-            class="font-label text-sm uppercase tracking-[0.3em] opacity-90 mb-12"
-            style=""
-          >
-            Experience the cinematic collection
-          </p>
-          <button
-            class="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500"
-            style=""
-          >
-            <span class="material-symbols-outlined" style="">play_arrow</span>
-          </button>
-        </div>
-      </section>
-      <!-- Category Section (Bento Grid Style) -->
-      <section class="py-32 px-12 max-w-screen-2xl mx-auto">
-        <div
-          class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8"
-        >
-          <div>
-            <h2
-              class="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-4"
-              style=""
-            >
-              The VEDICNature Families
-            </h2>
-            <h3
-              class="font-headline text-4xl text-primary max-w-lg italic"
-              style=""
-            >
-              Distilled from the world's most evocative botanical landscapes.
-            </h3>
-          </div>
-          <div class="text-right">
-            <a
-              class="font-label text-[11px] uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1"
-              href="#"
-              style=""
-              >Shop All Families</a
-            >
-          </div>
-        </div>
-        <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-          <!-- Floral -->
-          <div class="md:col-span-8 group cursor-pointer">
-            <div class="relative overflow-hidden aspect-[16/9] mb-6">
-              <img
-                alt="Floral Notes"
-                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                data-alt="Extreme close-up of a delicate blooming jasmine flower with dewdrops, soft creamy background, pastel color palette"
-                src="./Images/lavender.webp"
-                style="object-fit: fit; object-position: bottom;"
-              />
-              <div class="absolute bottom-8 left-8 text-white">
-                <span
-                  class="font-label pt-2 text-[10px] uppercase tracking-[0.4em]"
-                  style="color: purple; font-size: 50px;"
-                  >Lavender</span
-                >
-              </div>
-            </div>
-            <div class="flex justify-between items-center px-2">
-              <h4 class="font-headline text-2xl italic" style="">
-                Floral &amp; Botanical
-              </h4>
-              <span
-                class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
-                style=""
-                >arrow_forward</span
-              >
-            </div>
-            <p
-              class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60"
-              style=""
-            >
-              Delicate jasmine, crushed violet, and morning rose.
-            </p>
-          </div>
-          <!-- Woody -->
-          <div class="md:col-span-4 group cursor-pointer md:mt-24">
-            <div class="relative overflow-hidden aspect-[3/4] mb-6">
-              <img
-                alt="Woody Notes"
-                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                data-alt="Abstract macro shot of aged sandalwood bark with deep textures, warm amber lighting, rich earth tones"
-                src="./Images/mogra-landscape.webp"
-                style=""
-              />
-              <div class="absolute bottom-8 left-8 text-white">
-                <span
-                  class="font-label text-[10px] uppercase tracking-[0.4em]"
-                  style="font-size: 25px;"
-                  >MOGRA</span
-                >
-              </div>
-            </div>
-            <div class="flex justify-between items-center px-2">
-              <h4 class="font-headline text-2xl italic" style="">
-                Woody &amp; Smoke
-              </h4>
-              <span
-                class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
-                style=""
-                >arrow_forward</span
-              >
-            </div>
-            <p
-              class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60"
-              style=""
-            >
-              Ancient cedar, smoked oud, and vetiver root.
-            </p>
-          </div>
-          <!-- Oriental -->
-          <div class="md:col-span-4 group cursor-pointer">
-            <div class="relative overflow-hidden aspect-[3/4] mb-6">
-              <img
-                alt="Oriental Notes"
-                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                data-alt="Exotic spices including star anise and cinnamon sticks scattered on a dark silk fabric, moody dramatic lighting, deep gold accents"
-                src="./Images/24-k-gold-oud.webp"
-                style=""
-              />
-              <div class="absolute bottom-6 left-8 text-white">
-                <span
-                  class="font-label font-extralight text-[20px] text-[#C3A466] uppercase tracking-[0.4em]"
-                  style=""
-                  >24k Gold Oud</span
-                >
-              </div>
-            </div>
-            <div class="flex justify-between items-center px-2">
-              <h4 class="font-headline text-2xl italic" style="">
-                Oriental &amp; Spice
-              </h4>
-              <span
-                class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
-                style=""
-                >arrow_forward</span
-              >
-            </div>
-            <p
-              class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60"
-              style=""
-            >
-              Warm amber, black cardamom, and vanilla bean.
-            </p>
-          </div>
-          <!-- Fresh -->
-          <div class="md:col-span-8 group cursor-pointer">
-            <div class="relative bg-white overflow-hidden aspect-[16/9] mb-6">
-              <img
-                alt="Fresh Notes"
-                class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-                data-alt="Close up of sparkling blue sea water under bright sun, high contrast, refreshing and clean aesthetic"
-                src="./Images/real-kesar.webp"
-                style="object-fit: contain;"
-              />
-              <div class="absolute bottom-8 left-8 text-white">
-                <span
-                  class="font-label text-[#A58F9A] text-[20px] uppercase tracking-[0.4em]"
-                  style=""
-                  >Real Kesar</span
-                >
-              </div>
-            </div>
-            <div class="flex justify-between items-center px-2">
-              <h4 class="font-headline text-2xl italic" style="">
-                Fresh &amp; Marine
-              </h4>
-              <span
-                class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
-                style=""
-                >arrow_forward</span
-              >
-            </div>
-            <p
-              class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60"
-              style=""
-            >
-              Sea salt, Sicilian citrus, and crisp linen.
-            </p>
-          </div>
-        </div>
-      </section>
-      <!-- Product Highlight (Editorial Layout) -->
-      <section class="bg-surface-container py-32">
-        <div
-          class="max-w-screen-2xl mx-auto px-12 editorial-grid items-center gap-20"
-        >
-          <div class="col-span-12 md:col-span-6 relative">
-            <div
-              class=" bg-white flex items-center justify-center shadow-sm overflow-hidden"
-            >
-              <img
-                alt="Signature Scent"
-                class="w-full h-full object-contain"
-                data-alt="Minimalist luxury perfume bottle with a black cap, standing on a white reflective surface, architectural composition, clean background"
-                src="./Images/sandal-bliss.webp"
-                style=""
-              />
-            </div>
-          </div>
-          <div class="col-span-12 md:col-span-6">
-            <span
-              class="font-label text-[12px] uppercase tracking-[0.5em] text-secondary mb-6 block"
-              style=""
-              >Featured Fragrance</span
-            >
-            <h2
-              class="font-headline text-5xl text-primary mb-6 italic tracking-tighter"
-              style=""
-            >
-              Sandal Bliss
-            </h2>
-            <p
-              class="font-body text-lg text-on-surface-variant mb-10 leading-relaxed max-w-lg"
-              style=""
-            >
-              Our signature distillation. A complex dialogue between dark
-              resinous woods and the fragile brightness of white ginger. A scent
-              that lingers as a memory.
-            </p>
-            <div class="grid grid-cols-3 gap-6 mb-12">
-              <div>
-                <span
-                  class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2"
-                  style=""
-                  >Top Notes</span
-                >
-                <div
-                  class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
-                  style=""
-                >
-                  Ginger
-                </div>
-              </div>
-              <div>
-                <span
-                  class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2"
-                  style=""
-                  >Heart Notes</span
-                >
-                <div
-                  class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
-                  style=""
-                >
-                  Iris
-                </div>
-              </div>
-              <div>
-                <span
-                  class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2"
-                  style=""
-                  >Base Notes</span
-                >
-                <div
-                  class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
-                  style=""
-                >
-                  Oud
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center gap-10">
-              <button
-                class="bg-primary text-on-primary px-12 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-all active:scale-95"
-                style=""
-              >
-                Sandal Bliss — $240
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- Newsletter / Journal Minimal Section -->
-      <section class="py-40 text-center px-6">
-        <div class="max-w-2xl mx-auto">
-          <span
-            class="material-symbols-outlined text-secondary text-3xl mb-8"
-            style=""
-            >auto_awesome</span
-          >
-          <h2 class="font-headline text-4xl text-primary mb-6 italic" style="">
-            Join the Vedic Nature
+            class="absolute -top-1 -right-1 text-[8px] bg-secondary text-white w-3 h-3 flex items-center justify-center rounded-full"
+            style="">0</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+  <main class="">
+    <!-- Hero Section -->
+    <section class="relative min-height-[921px] max-w-screen flex items-center pt-24 overflow-hidden">
+      <div class=" mx-auto px-12 w-full editorial-grid gap-8 items-center">
+        <div class="col-span-12 md:col-span-5 order-1 md:order-2 pt-12 md:pt-0">
+          <h2 class="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-6" style="">
+            L'Essence de la Nature
           </h2>
-          <p
-            class="font-body text-on-surface-variant mb-12 opacity-70"
-            style=""
-          >
-            Weekly meditations on scent, architecture, and the art of slow
-            living.
+          <h1 class="font-headline text-5xl md:text-7xl leading-[1.1] text-primary tracking-tighter mb-8 italic"
+            style="">
+            The Silent <br />Luxury of Scent
+          </h1>
+          <p class="font-body text-on-surface-variant max-w-md mb-10 leading-relaxed opacity-80" style="">
+            An editorial exploration of botanical purity and architectural
+            fragrance design. Crafted for those who find power in the quiet
+            moments.
           </p>
-          <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-            <input
-              class="flex-1 bg-transparent border-b border-outline-variant py-3 px-2 font-label text-[11px] focus:outline-none focus:border-secondary transition-all placeholder:text-stone-400"
-              placeholder="EMAIL ADDRESS"
-              type="email"
-            />
+          <div class="flex items-center gap-8">
             <button
-              class="font-label text-[11px] uppercase tracking-[0.2em] text-primary px-4 py-3 hover:text-secondary transition-colors"
-              type="submit"
-              style=""
-            >
-              Subscribe
+              class="bg-primary text-on-primary px-10 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-all active:scale-95 shadow-sm"
+              style="">
+              Discover Collection
             </button>
-          </form>
-        </div>
-      </section>
-    </main>
-    <!-- Footer -->
-    <footer class="bg-[#fcf9f3] w-full border-t border-stone-200/10">
-      <div
-        class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto"
-      >
-        <div>
-          <span
-            class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold"
-            style=""
-            >EDITS</span
-          >
-          <ul class="space-y-4">
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Journal</a
-              >
-            </li>
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Sustainability</a
-              >
-            </li>
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Instagram</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div>
-          <span
-            class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold"
-            style=""
-            >Support</span
-          >
-          <ul class="space-y-4">
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Shipping</a
-              >
-            </li>
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Contact</a
-              >
-            </li>
-            <li class="" style="">
-              <a
-                class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
-                href="#"
-                style=""
-                >Newsletter</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div class="flex flex-col justify-between items-start md:items-end">
-          <div class="text-left md:text-right">
-            <p
-              class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] max-w-[250px]"
-              style=""
-            >
-              Paris • London • New York • Tokyo
-            </p>
+            <button class="group relative py-2 overflow-hidden" style="">
+              <span class="font-label text-[11px] uppercase tracking-[0.2em] text-primary" style="">View Journal</span>
+              <div
+                class="absolute bottom-0 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left">
+              </div>
+            </button>
           </div>
-          <div class="mt-12 md:mt-0">
-            <p
-              class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-40"
-              style=""
-            >
-              © 2026 THE Vedic Nature. ALL RIGHTS RESERVED | Designed and
-              developed by reef technolgies.
-            </p>
+        </div>
+        <div class="col-span-12 md:col-span-7 order-1 md:order-2 relative h-[600px] md:h-[800px]">
+          <div class="absolute inset-0 bg-surface-container-low rounded-lg translate-x-8 translate-y-8 -z-10"></div>
+          <img alt="Luxury Perfume Bottle" class="w-full h-full object-cover object-center shadow-2xl rounded-lg"
+            data-alt="Minimalist glass perfume bottle on a textured stone pedestal, soft natural morning light, cinematic shadows, high-end product photography style"
+            src="./Images/mogra-portrait.webp" style="" />
+        </div>
+      </div>
+    </section>
+    <!-- Video Section (Cinematic Essence) -->
+    <section class="mt-32 relative h-[819px] w-full overflow-hidden flex items-center justify-center">
+      <div class="absolute inset-0 z-0">
+        <img alt="Mist and Petals" class="w-full h-full object-cover brightness-75"
+          data-alt="Cinematic slow motion shot of white flower petals falling through morning mist, soft golden hour lighting, ethereal and dreamy atmosphere"
+          src="./Images/mogra-landscape.webp" style="" />
+        <div class="absolute inset-0 bg-black/20"></div>
+      </div>
+      <div class="relative z-10 text-center text-white max-w-3xl px-6">
+        <span class="material-symbols-outlined text-4xl mb-6 opacity-80"
+          style="font-variation-settings: &quot;wght&quot; 200">air</span>
+        <h3 class="font-headline text-4xl md:text-6xl mb-8 tracking-tight italic" style="">
+          A Symphony of Unspoken Words
+        </h3>
+        <p class="font-label text-sm uppercase tracking-[0.3em] opacity-90 mb-12" style="">
+          Experience the cinematic collection
+        </p>
+        <button
+          class="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-all duration-500"
+          style="">
+          <span class="material-symbols-outlined" style="">play_arrow</span>
+        </button>
+      </div>
+    </section>
+    <!-- Category Section (Bento Grid Style) -->
+    <section class="py-32 px-12 max-w-screen-2xl mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+        <div>
+          <h2 class="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-4" style="">
+            The VEDICNature Families
+          </h2>
+          <h3 class="font-headline text-4xl text-primary max-w-lg italic" style="">
+            Distilled from the world's most evocative botanical landscapes.
+          </h3>
+        </div>
+        <div class="text-right">
+          <a class="font-label text-[11px] uppercase tracking-[0.2em] text-primary border-b border-primary/20 pb-1"
+            href="#" style="">Shop All Families</a>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+        <!-- Floral -->
+        <div class="md:col-span-8 group cursor-pointer">
+          <div class="relative overflow-hidden aspect-[16/9] mb-6">
+            <img alt="Floral Notes"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Extreme close-up of a delicate blooming jasmine flower with dewdrops, soft creamy background, pastel color palette"
+              src="./Images/lavender.webp" style="object-fit: fit; object-position: bottom;" />
+            <div class="absolute bottom-8 left-8 text-white">
+              <span class="font-label pt-2 text-[10px] uppercase tracking-[0.4em]"
+                style="color: purple; font-size: 50px;">Lavender</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center px-2">
+            <h4 class="font-headline text-2xl italic" style="">
+              Floral &amp; Botanical
+            </h4>
+            <span
+              class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
+              style="">arrow_forward</span>
+          </div>
+          <p class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60" style="">
+            Delicate jasmine, crushed violet, and morning rose.
+          </p>
+        </div>
+        <!-- Woody -->
+        <div class="md:col-span-4 group cursor-pointer md:mt-24">
+          <div class="relative overflow-hidden aspect-[3/4] mb-6">
+            <img alt="Woody Notes"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Abstract macro shot of aged sandalwood bark with deep textures, warm amber lighting, rich earth tones"
+              src="./Images/mogra-landscape.webp" style="" />
+            <div class="absolute bottom-8 left-8 text-white">
+              <span class="font-label text-[10px] uppercase tracking-[0.4em]" style="font-size: 25px;">MOGRA</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center px-2">
+            <h4 class="font-headline text-2xl italic" style="">
+              Woody &amp; Smoke
+            </h4>
+            <span
+              class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
+              style="">arrow_forward</span>
+          </div>
+          <p class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60" style="">
+            Ancient cedar, smoked oud, and vetiver root.
+          </p>
+        </div>
+        <!-- Oriental -->
+        <div class="md:col-span-4 group cursor-pointer">
+          <div class="relative overflow-hidden aspect-[3/4] mb-6">
+            <img alt="Oriental Notes"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Exotic spices including star anise and cinnamon sticks scattered on a dark silk fabric, moody dramatic lighting, deep gold accents"
+              src="./Images/24-k-gold-oud.webp" style="" />
+            <div class="absolute bottom-6 left-8 text-white">
+              <span class="font-label font-extralight text-[20px] text-[#C3A466] uppercase tracking-[0.4em]"
+                style="">24k Gold Oud</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center px-2">
+            <h4 class="font-headline text-2xl italic" style="">
+              Oriental &amp; Spice
+            </h4>
+            <span
+              class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
+              style="">arrow_forward</span>
+          </div>
+          <p class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60" style="">
+            Warm amber, black cardamom, and vanilla bean.
+          </p>
+        </div>
+        <!-- Fresh -->
+        <div class="md:col-span-8 group cursor-pointer">
+          <div class="relative bg-white overflow-hidden aspect-[16/9] mb-6">
+            <img alt="Fresh Notes"
+              class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
+              data-alt="Close up of sparkling blue sea water under bright sun, high contrast, refreshing and clean aesthetic"
+              src="./Images/real-kesar.webp" style="object-fit: contain;" />
+            <div class="absolute bottom-8 left-8 text-white">
+              <span class="font-label text-[#A58F9A] text-[20px] uppercase tracking-[0.4em]" style="">Real Kesar</span>
+            </div>
+          </div>
+          <div class="flex justify-between items-center px-2">
+            <h4 class="font-headline text-2xl italic" style="">
+              Fresh &amp; Marine
+            </h4>
+            <span
+              class="material-symbols-outlined text-secondary opacity-0 group-hover:opacity-100 translate-x-[-10px] group-hover:translate-x-0 transition-all"
+              style="">arrow_forward</span>
+          </div>
+          <p class="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60" style="">
+            Sea salt, Sicilian citrus, and crisp linen.
+          </p>
+        </div>
+      </div>
+    </section>
+    <!-- Product Highlight (Editorial Layout) -->
+    <section class="bg-surface-container py-32">
+      <div class="max-w-screen-2xl mx-auto px-12 editorial-grid items-center gap-20">
+        <div class="col-span-12 md:col-span-6 relative">
+          <div class=" bg-white flex items-center justify-center shadow-sm overflow-hidden">
+            <img alt="Signature Scent" class="w-full h-full object-contain"
+              data-alt="Minimalist luxury perfume bottle with a black cap, standing on a white reflective surface, architectural composition, clean background"
+              src="./Images/sandal-bliss.webp" style="" />
+          </div>
+        </div>
+        <div class="col-span-12 md:col-span-6">
+          <span class="font-label text-[12px] uppercase tracking-[0.5em] text-secondary mb-6 block" style="">Featured
+            Fragrance</span>
+          <h2 class="font-headline text-5xl text-primary mb-6 italic tracking-tighter" style="">
+            Sandal Bliss
+          </h2>
+          <p class="font-body text-lg text-on-surface-variant mb-10 leading-relaxed max-w-lg" style="">
+            Our signature distillation. A complex dialogue between dark
+            resinous woods and the fragile brightness of white ginger. A scent
+            that lingers as a memory.
+          </p>
+          <div class="grid grid-cols-3 gap-6 mb-12">
+            <div>
+              <span class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2" style="">Top
+                Notes</span>
+              <div
+                class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
+                style="">
+                Ginger
+              </div>
+            </div>
+            <div>
+              <span class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2" style="">Heart
+                Notes</span>
+              <div
+                class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
+                style="">
+                Iris
+              </div>
+            </div>
+            <div>
+              <span class="font-label text-[9px] uppercase tracking-[0.2em] text-primary block mb-2" style="">Base
+                Notes</span>
+              <div
+                class="bg-surface-container-highest px-3 py-1 rounded-full inline-block font-label text-[10px] uppercase text-primary"
+                style="">
+                Oud
+              </div>
+            </div>
+          </div>
+          <div class="flex items-center gap-10">
+            <button
+              class="bg-primary text-on-primary px-12 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 transition-all active:scale-95"
+              style="">
+              Sandal Bliss — $240
+            </button>
           </div>
         </div>
       </div>
-    </footer>
-  </body>
+    </section>
+    <!-- Newsletter / Journal Minimal Section -->
+    <section class="py-40 text-center px-6">
+      <div class="max-w-2xl mx-auto">
+        <span class="material-symbols-outlined text-secondary text-3xl mb-8" style="">auto_awesome</span>
+        <h2 class="font-headline text-4xl text-primary mb-6 italic" style="">
+          Join the Vedic Nature
+        </h2>
+        <p class="font-body text-on-surface-variant mb-12 opacity-70" style="">
+          Weekly meditations on scent, architecture, and the art of slow
+          living.
+        </p>
+        <form class="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+          <input
+            class="flex-1 bg-transparent border-b border-outline-variant py-3 px-2 font-label text-[11px] focus:outline-none focus:border-secondary transition-all placeholder:text-stone-400"
+            placeholder="EMAIL ADDRESS" type="email" />
+          <button
+            class="font-label text-[11px] uppercase tracking-[0.2em] text-primary px-4 py-3 hover:text-secondary transition-colors"
+            type="submit" style="">
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <!-- Footer -->
+  <footer class="bg-[#fcf9f3] w-full border-t border-stone-200/10">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
+      <div>
+        <span class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold"
+          style="">EDITS</span>
+        <ul class="space-y-4">
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Journal</a>
+          </li>
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Sustainability</a>
+          </li>
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Instagram</a>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <span class="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold"
+          style="">Support</span>
+        <ul class="space-y-4">
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Shipping</a>
+          </li>
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Contact</a>
+          </li>
+          <li class="" style="">
+            <a class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              href="#" style="">Newsletter</a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex flex-col justify-between items-start md:items-end">
+        <div class="text-left md:text-right">
+          <p class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] max-w-[250px]" style="">
+            Paris • London • New York • Tokyo
+          </p>
+        </div>
+        <div class="mt-12 md:mt-0">
+          <p class="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-40" style="">
+            © 2026 THE Vedic Nature. ALL RIGHTS RESERVED | Designed and
+            developed by reef technolgies.
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
 </html>

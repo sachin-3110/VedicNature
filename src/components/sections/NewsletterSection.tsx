@@ -16,10 +16,10 @@ export function NewsletterSection() {
           Weekly meditations on scent, architecture, and the art of slow
           living.
         </p>
-        <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto" onSubmit={(e) => e.preventDefault()}>
-          <Input 
-            placeholder="EMAIL ADDRESS" 
-            type="email" 
+        <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
+          <Input
+            placeholder="EMAIL ADDRESS"
+            type="email"
             className="flex-1"
             required
           />

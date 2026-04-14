@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
-import { Noto_Serif, Manrope } from "next/font/google";
+import { Noto_Serif, Manrope, Geist } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 const notoSerif = Noto_Serif({
   variable: "--font-headline-var",
@@ -27,7 +30,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`scroll-smooth ${notoSerif.variable} ${manrope.variable} h-full antialiased`}
+      className={cn("scroll-smooth", "h-full", "antialiased", notoSerif.variable, manrope.variable, "font-sans", geist.variable)}
     >
       <head>
         <link
