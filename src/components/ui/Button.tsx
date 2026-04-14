@@ -1,35 +1,77 @@
 import Link from 'next/link';
-import React, { ButtonHTMLAttributes } from 'react';
+import React from 'react';
 
 type ButtonVariant = 'primary' | 'underline' | 'icon-outline' | 'ghost';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+// Shared props
+interface BaseProps {
   variant?: ButtonVariant;
   children: React.ReactNode;
+  className?: string;
 }
 
-export function Button({ variant = 'primary', children, className = '', ...props }: ButtonProps) {
+// Button version
+type ButtonProps = BaseProps &
+  React.ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: never;
+  };
+
+// Link version
+type LinkProps = BaseProps &
+  React.AnchorHTMLAttributes<HTMLAnchorElement> & {
+    href: string;
+  };
+
+type Props = ButtonProps | LinkProps;
+
+export function Button(props: Props) {
+  const { variant = 'primary', children, className = '' } = props;
+
   const baseClasses = 'transition-all duration-500';
 
   const variants = {
-    primary: 'bg-primary/60 text-on-primary px-10 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 active:scale-110 cursor-pointer shadow-sm',
-    underline: 'group relative py-2 overflow-hidden font-label text-[11px] uppercase tracking-[0.2em] text-primary',
-    'icon-outline': 'w-16 h-16 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black',
-    ghost: 'font-label text-[11px] uppercase tracking-[0.2em] text-primary hover:text-secondary',
+    primary:
+      'bg-primary/60 text-on-primary px-10 py-4 font-label text-[11px] uppercase tracking-[0.2em] hover:opacity-90 active:scale-110 cursor-pointer shadow-sm',
+    underline:
+      'group relative py-2 overflow-hidden font-label text-[11px] uppercase tracking-[0.2em] text-primary',
+    'icon-outline':
+      'w-16 h-16 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black',
+    ghost:
+      'font-label text-[11px] uppercase tracking-[0.2em] text-primary hover:text-secondary',
   };
 
-  if (variant === 'underline') {
+  const computedClassName = `${baseClasses} ${variants[variant]} ${className}`;
+
+  // 👉 If it's a link
+  if ('href' in props && props.href !== undefined) {
+    const { href, variant: _v, className: _c, ...rest } = props as LinkProps;
+
     return (
-      <Link href="#" className={`${baseClasses} ${variants[variant]} ${className}`} {...props}>
-        <span>{children}</span>
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      <Link
+        href={href}
+        className={computedClassName}
+        {...rest}
+      >
+        {variant === 'underline' ? <span>{children}</span> : children}
+        {variant === 'underline' && (
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        )}
       </Link>
     );
   }
 
+  // 👉 Otherwise it's a button
+  const { href, variant: _v, className: _c, ...buttonRest } = props as ButtonProps;
+  
   return (
-    <button className={`${baseClasses} ${variants[variant]} ${className}`} {...props}>
-      {children}
+    <button
+      className={computedClassName}
+      {...buttonRest}
+    >
+      {variant === 'underline' ? <span>{children}</span> : children}
+      {variant === 'underline' && (
+        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-secondary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      )}
     </button>
   );
 }

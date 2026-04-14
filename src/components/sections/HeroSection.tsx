@@ -24,8 +24,8 @@ export function HeroSection() {
             moments.
           </p>
           <div className="flex flex-wrap items-center gap-8">
-            <Button variant="primary">Discover Collection</Button>
-            <Button variant="underline">View Journal</Button>
+            <Button href="/collections" variant="primary">Discover Collection</Button>
+            <Button href='#' variant="underline">View Journal</Button>
           </div>
         </div>
         <div className=" col-span-12 md:col-span-12 lg:col-span-6 order-1 md:order-2 relative h-[600px] md:h-[650px]">
