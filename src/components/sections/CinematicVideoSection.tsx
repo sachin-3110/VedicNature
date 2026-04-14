@@ -2,14 +2,20 @@ import React from 'react';
 import Image from 'next/image';
 import { IconButton } from '@/components/ui/IconButton';
 
+const CinematicAssets = {
+  background: "/homepageimg/mogra-landscape.webp",
+  alt: "Mist and Petals"
+
+};
+
 export function CinematicVideoSection() {
   return (
     <section className="mt-32 relative h-[819px] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <Image 
-          alt="Mist and Petals" 
+        <Image
+          alt={CinematicAssets.alt}
           className="w-full h-full object-cover brightness-75"
-          src="/vedicnaturecompressedimages/mogra.jpg.webp" 
+          src={CinematicAssets.background}
           fill
         />
         <div className="absolute inset-0 bg-black/20"></div>

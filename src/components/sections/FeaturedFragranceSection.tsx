@@ -4,28 +4,31 @@ import { Button } from '@/components/ui/Button';
 import { NoteList } from '@/components/blocks/NoteList';
 import { Label } from '@/components/ui/Label';
 
+const FeaturedAssets = {
+  sandalBliss: "/vedicnaturecompressedimages/sandalblissperfume.webp"
+};
+
 export function FeaturedFragranceSection() {
   return (
-    <section className="bg-surface-container py-32">
-      <div className="flex flex-col md:flex-row justify-evenly">
-        <div className="">
-          <div className=" bg-white shadow-sm overflow-hidden relative">
+    <section className="bg-surface-container py-16">
+      <div className="flex h-[80%] flex-col md:flex-row">
+        <div className="flex flex-col justify-center items-center w-full sm:w-1/2">
+          <div className="w-full h-full md:h-[90%] bg-white relative shadow-lg">
             <Image
               alt="Signature Scent"
-              className="w-full h-full object-contain p-12"
-              src="/vedicnaturecompressedimages/sandalblissperfume.webp"
-              height={500}
+              className="w-full h-full object-cover p-4 sm:p-10"
+              src={FeaturedAssets.sandalBliss}
               width={500}
-            // fill
+              height={500}
             />
           </div>
         </div>
-        <div className="p-6 sm:p-6 flex flex-col justify-center">
-          <Label className="mb-6 text-xl tracking-[0.5em]">Featured Fragrance</Label>
-          <h2 className="font-headline text-4xl sm:text-5xl text-primary mb-6 italic tracking-tighter">
+        <div className="p-6 sm:p-4 w-full md:w-1/2 flex flex-col justify-center">
+          <Label className="mb-4 text-2xl tracking-[0.5em]">Featured Fragrance</Label>
+          <h2 className="font-headline text-4xl sm:text-5xl text-primary/80 mb-4 italic tracking-tighter">
             Sandal Bliss
           </h2>
-          <p className="font-body text-sm sm:text-lg text-on-surface-variant mb-10 leading-relaxed max-w-lg">
+          <p className="font-body text-sm sm:text-lg text-on-surface-variant mb-4 leading-relaxed max-w-lg">
             Our signature distillation. A complex dialogue between dark
             resinous woods and the fragile brightness of white ginger. A scent
             that lingers as a memory.

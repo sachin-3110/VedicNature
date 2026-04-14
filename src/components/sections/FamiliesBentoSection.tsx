@@ -1,6 +1,13 @@
 import React from 'react';
 import { CategoryCard } from '@/components/blocks/CategoryCard';
 
+const BentoAssets = {
+  lavender: "/vedicnaturecompressedimages/lavenderattar.webp",
+  mogra: "/vedicnaturecompressedimages/mogra.jpg.webp",
+  goldOud: "/vedicnaturecompressedimages/24kgold.webp",
+  kesar: "/vedicnaturecompressedimages/realkesarattar.webp"
+};
+
 export function FamiliesBentoSection() {
   return (
     <section className="py-32 px-12 max-w-screen-2xl mx-auto">
@@ -22,7 +29,7 @@ export function FamiliesBentoSection() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
         <div className="md:col-span-8">
           <CategoryCard
-            imageSrc="/vedicnaturecompressedimages/lavenderattar.webp"
+            imageSrc={BentoAssets.lavender}
             imageAlt="Floral Notes"
             titleOverlay="Lavender"
             titleOverlayColor="purple"
@@ -35,7 +42,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-4 md:mt-24">
           <CategoryCard
-            imageSrc="/vedicnaturecompressedimages/mogra.jpg.webp"
+            imageSrc={BentoAssets.mogra}
             imageAlt="Woody Notes"
             titleOverlay="MOGRA"
             titleOverlayColor="white"
@@ -47,7 +54,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-4">
           <CategoryCard
-            imageSrc="/vedicnaturecompressedimages/24kgold.webp"
+            imageSrc={BentoAssets.goldOud}
             imageAlt="Oriental Notes"
             titleOverlay="24k Gold Oud"
             titleOverlayColor="#C3A466"
@@ -59,7 +66,7 @@ export function FamiliesBentoSection() {
         </div>
         <div className="md:col-span-8">
           <CategoryCard
-            imageSrc="/vedicnaturecompressedimages/realkesarattar.webp"
+            imageSrc={BentoAssets.kesar}
             imageAlt="Fresh Notes"
             titleOverlay="Real Kesar"
             titleOverlayColor="#A58F9A"
