@@ -23,21 +23,23 @@ export function FeaturedFragranceSection() {
             />
           </div>
         </div>
-        <div className="p-6 sm:p-4 w-full md:w-1/2 flex flex-col justify-center">
-          <Label className="mb-4 text-2xl tracking-[0.5em]">Featured Fragrance</Label>
-          <h2 className="font-headline text-4xl sm:text-5xl text-primary/80 mb-4 italic tracking-tighter">
-            Sandal Bliss
-          </h2>
-          <p className="font-body text-sm sm:text-lg text-on-surface-variant mb-4 leading-relaxed max-w-lg">
-            Our signature distillation. A complex dialogue between dark
-            resinous woods and the fragile brightness of white ginger. A scent
-            that lingers as a memory.
-          </p>
+        <div className="p-6 sm:p-4 w-full md:w-1/2 flex flex-col items-center justify-center">
+          <div>
+            <Label className="mb-4 text-2xl tracking-[0.5em]">Featured Fragrance</Label>
+            <h2 className="font-headline text-4xl sm:text-5xl text-primary/80 mb-4 italic tracking-tighter">
+              Sandal Bliss
+            </h2>
+            <p className="font-body text-sm sm:text-lg text-on-surface-variant mb-4 leading-relaxed max-w-lg">
+              Our signature distillation. A complex dialogue between dark
+              resinous woods and the fragile brightness of white ginger. A scent
+              that lingers as a memory.
+            </p>
 
-          <NoteList top="Ginger" heart="Iris" base="Oud" />
+            <NoteList top="Ginger" heart="Iris" base="Oud" />
 
-          <div className="flex items-center gap-10">
-            <Button variant="primary">Sandal Bliss — $240</Button>
+            <div className="flex items-center gap-10">
+              <Button variant="primary">Sandal Bliss — $240</Button>
+            </div>
           </div>
         </div>
       </div>

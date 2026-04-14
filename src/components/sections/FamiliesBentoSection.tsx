@@ -33,11 +33,11 @@ export function FamiliesBentoSection() {
             imageAlt="Floral Notes"
             titleOverlay="Lavender"
             titleOverlayColor="purple"
-            titleOverlaySize="text-[50px] pt-2"
+            titleOverlaySize="text-[20px] pt-2"
             title="Floral & Botanical"
             description="Delicate jasmine, crushed violet, and morning rose."
             imageAspect="aspect-[16/9]"
-            imageObjectFit="cover"
+            imageObjectFit="contain"
           />
         </div>
         <div className="md:col-span-4 md:mt-24">
@@ -46,7 +46,7 @@ export function FamiliesBentoSection() {
             imageAlt="Woody Notes"
             titleOverlay="MOGRA"
             titleOverlayColor="white"
-            titleOverlaySize="text-[25px]"
+            titleOverlaySize="text-[20px]"
             title="Woody & Smoke"
             description="Ancient cedar, smoked oud, and vetiver root."
             imageAspect="aspect-[3/4]"
@@ -58,7 +58,7 @@ export function FamiliesBentoSection() {
             imageAlt="Oriental Notes"
             titleOverlay="24k Gold Oud"
             titleOverlayColor="#C3A466"
-            titleOverlaySize="text-[20px] font-extralight"
+            titleOverlaySize="text-[20px] relative top-5 font-extralight"
             title="Oriental & Spice"
             description="Warm amber, black cardamom, and vanilla bean."
             imageAspect="aspect-[3/4]"
