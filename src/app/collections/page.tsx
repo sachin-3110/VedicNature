@@ -10,7 +10,7 @@ const categories = [
     description: "Pure floral essences captured at the peak of their blooming cycle.",
     products: [
       { id: 2, name: "Blossom & Bliss", category: "Floral Attar", image: "/vedicnaturecompressedimages/blossomandblissattar.webp" },
-      { id: 4, name: "Jasmine Sandal", category: "Floral Attar", image: "/vedicnaturecompressedimages/jasmineandpuresandal (1).webp" },
+      { id: 4, name: "Jasmine Sandal", category: "Floral Attar", image: "/vedicnaturecompressedimages/jasmineandpuresandal_(1).webp" },
       { id: 7, name: "Divine Rose", category: "Floral Attar", image: "/vedicnaturecompressedimages/divineroseandfreshorangeandjasmine.webp" },
       { id: 8, name: "SimpBliss Floral", category: "Floral Attar", image: "/vedicnaturecompressedimages/simpblissluxuryfloralandoudattar.webp" }
     ]
@@ -76,6 +76,7 @@ export default function CollectionsPage() {
                         src={item.image}
                         alt={item.name}
                         fill
+                        unoptimized
                         className="object-contain p-4 transition-transform duration-1000 ease-out group-hover:scale-110"
                       />
                     </div>
