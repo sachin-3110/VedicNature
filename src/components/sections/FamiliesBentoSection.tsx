@@ -2,10 +2,10 @@ import React from 'react';
 import { CategoryCard } from '@/components/blocks/CategoryCard';
 
 const BentoAssets = {
-  lavender: "/vedicnaturecompressedimages/lavenderattar.webp",
-  mogra: "/vedicnaturecompressedimages/mogra.jpg.webp",
-  goldOud: "/vedicnaturecompressedimages/24kgold.webp",
-  kesar: "/vedicnaturecompressedimages/realkesarattar.webp"
+  lavender: "/vedicnaturecompressedimages/vedicNature/lavenderattar.webp",
+  mogra: "/vedicnaturecompressedimages/vedicNature/mogra.jpg.webp",
+  goldOud: "/vedicnaturecompressedimages/vedicNature/divinegoldattar.webp",
+  kesar: "/vedicnaturecompressedimages/vedicNature/realkesarattar.webp"
 };
 
 export function FamiliesBentoSection() {

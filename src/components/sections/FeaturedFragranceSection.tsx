@@ -5,7 +5,7 @@ import { NoteList } from '@/components/blocks/NoteList';
 import { Label } from '@/components/ui/Label';
 
 const FeaturedAssets = {
-  sandalBliss: "/vedicnaturecompressedimages/sandalblissperfume.webp"
+  sandalBliss: "/vedicnaturecompressedimages/vedicNature/sandalblissattar.webp"
 };
 
 export function FeaturedFragranceSection() {

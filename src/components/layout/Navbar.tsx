@@ -15,7 +15,7 @@ export default function Navbar() {
           <div style={{ height: '60px' }} className="relative flex items-center">
             <Link href="/" className='h-full w-full relative'>
               <Image
-                src="/vedicnaturecompressedimages/logo.webp"
+                src="/vedicnaturecompressedimages/vedicNature/logo.webp"
                 alt="logo"
                 width={150}
                 height={60}

@@ -3,21 +3,25 @@ import Image from 'next/image';
 import { IconButton } from '@/components/ui/IconButton';
 
 const CinematicAssets = {
-  background: "/homepageimg/mogra-landscape.webp",
+  background: "/vedicnaturecompressedimages/vedicNature/banner/banner.jpeg",
   alt: "Mist and Petals"
 
 };
 
 export function CinematicVideoSection() {
   return (
-    <section className="mt-32 relative h-[819px] w-full overflow-hidden flex items-center justify-center">
+    <section className="mb-20 relative h-[819px] w-full overflow-hidden flex items-center justify-center">
       <div className="absolute inset-0 z-0">
-        <Image
-          alt={CinematicAssets.alt}
-          className="w-full h-full object-cover brightness-75"
-          src={CinematicAssets.background}
-          fill
-        />
+        <video poster={CinematicAssets.background} controls preload="auto" className='h-[100%] w-[100%] object-cover' autoPlay muted playsInline loop>
+          <source src="/vedicnaturecompressedimages/vedicNature/banner/bannerVideo.mp4" type="video/mp4" />
+          <track
+            src="/vedicnaturecompressedimages/vedicNature/banner/bannerVideo.vtt"
+            kind="subtitles"
+            srcLang="en"
+            label="English"
+          />
+          Your browser does not support the video tag.
+        </video>
         <div className="absolute inset-0 bg-black/20"></div>
       </div>
       <div className="relative z-10 text-center text-white max-w-3xl px-6 flex flex-col items-center">

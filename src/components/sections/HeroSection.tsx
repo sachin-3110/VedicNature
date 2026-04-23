@@ -9,9 +9,9 @@ const HeroAssets = {
 
 export function HeroSection() {
   return (
-    <section className="relative bg-secondary  max-w-screen flex items-center pt-24 overflow-hidden">
-      <div className="mx-auto md:px-6 w-full grid gap-2 grid-cols-1 md:grid-cols-12 items-center ">
-        <div className="col-span-12 px-6 lg:px-12 md:col-span-12 lg:col-span-6  order-2 md:order-1 pt-12 md:pt-0">
+    <section className="relative  max-w-screen flex items-center overflow-hidden">
+      <div className="mx-auto w-full grid gap-2 grid-cols-1 md:grid-cols-12 items-center ">
+        <div className="col-span-12 px-6 lg:px-12 md:col-span-12 lg:col-span-6  order-1 md:order-2 pt-12 md:pt-0">
           <h2 className="font-label text-[12px] uppercase tracking-[0.4em] text-[#775a19] mb-6">
             L'Essence de la Nature
           </h2>

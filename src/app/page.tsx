@@ -6,12 +6,12 @@ import { NewsletterSection } from '@/components/sections/NewsletterSection';
 
 export default function Home() {
   return (
-      <div className='bg-secondary'>
-        <HeroSection />
-        <CinematicVideoSection />
-        <FamiliesBentoSection />
-        <FeaturedFragranceSection />
-        <NewsletterSection />
-      </div>
+    <div className='bg-secondary'>
+      <CinematicVideoSection />
+      <HeroSection />
+      <FamiliesBentoSection />
+      <FeaturedFragranceSection />
+      <NewsletterSection />
+    </div>
   );
 }
