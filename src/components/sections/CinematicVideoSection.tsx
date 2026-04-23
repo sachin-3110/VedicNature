@@ -31,9 +31,6 @@ export function CinematicVideoSection() {
         <h3 className="font-headline text-4xl md:text-6xl mb-8 tracking-tight italic">
           A Symphony of Unspoken Words
         </h3>
-        <p className="font-label text-sm uppercase tracking-[0.3em] opacity-90 mb-12">
-          Experience the cinematic collection
-        </p>
       </div>
     </section>
   );
