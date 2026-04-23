@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { PRODUCTS } from "@/lib/products";
 
 export const categories = [
   {
@@ -98,6 +99,15 @@ export default function CollectionsPage() {
                         unoptimized
                         className="object-contain p-4 transition-transform duration-1000 ease-out"
                       />
+                      
+                      {/* Access stock from global PRODUCTS array */}
+                      {PRODUCTS.find(p => p.id === item.id)?.stock === 0 && (
+                        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+                          <span className="bg-[#1c1c18] text-white text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-sm font-medium">
+                            Out of Stock
+                          </span>
+                        </div>
+                      )}
                     </div>
                     <div className="flex flex-col items-center text-center gap-2">
                       <span className="text-[10px] font-sans tracking-[0.25em] text-[#5f5e5e] uppercase">

@@ -3,13 +3,13 @@ import Link from "next/link";
 export default function Footer() {
   return (
     <footer className="bg-[#fcf9f3] w-full border-t border-stone-200/10">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
         {/* Edits col */}
         <div>
-          <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold">
+          <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-2 block font-bold">
             EDITS
           </span>
-          <ul className="space-y-4">
+          <ul className="space-y-2">
             <li>
               <Link
                 href="/journal"
@@ -41,10 +41,10 @@ export default function Footer() {
 
         {/* Support col */}
         <div>
-          <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-8 block font-bold">
+          <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-[#5f5e5e] mb-2 block font-bold">
             Support
           </span>
-          <ul className="space-y-4">
+          <ul className="space-y-2">
             <li>
               <Link
                 href="/shipping"
@@ -74,10 +74,10 @@ export default function Footer() {
 
         {/* Right Info col */}
         <div className="flex flex-col justify-between items-start md:items-end">
-          <div className="text-left md:text-right">
-            <p className="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] max-w-[250px]">
-              Paris &bull; London &bull; New York &bull; Tokyo
-            </p>
+          <div className="text-left md:text-right w-46">
+            <a href="https://maps.app.goo.gl/kiU7TLzHsrDN6HuU7" target="_blank" rel="noopener noreferrer" className="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e]">
+              101, choudhary market, near bank of Baroda, mayur vihar delhi 110091
+            </a>
           </div>
           <div className="mt-12 md:mt-0">
             <p className="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-40">

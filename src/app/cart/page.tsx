@@ -70,7 +70,7 @@ export default function CartPage() {
                         </Link>
                         <button 
                           onClick={() => removeFromCart(item.product.id)}
-                          className="text-[10px] uppercase tracking-widest text-red-400 hover:text-red-600 transition-colors self-start mt-2"
+                          className="text-[10px] uppercase tracking-widest text-red-400 hover:text-red-600 transition-all duration-200 active:scale-105 cursor-pointer self-start mt-2"
                         >
                           Remove
                         </button>
@@ -89,14 +89,14 @@ export default function CartPage() {
                       <div className="flex items-center border border-[#d1c5b4] rounded-full px-3 py-1 bg-[#fcf9f3]">
                         <button 
                           onClick={() => updateQuantity(item.product.id, item.quantity - 1)}
-                          className="p-1 text-[#5f5e5e] hover:text-[#1c1c18] transition-colors"
+                          className="p-1 text-[#5f5e5e] hover:text-[#1c1c18] transition-all duration-200 cursor-pointer active:scale-105"
                         >
                           <Minus className="w-3 h-3" />
                         </button>
                         <span className="w-8 text-center text-sm font-medium">{item.quantity}</span>
                         <button 
                           onClick={() => updateQuantity(item.product.id, item.quantity + 1)}
-                          className="p-1 text-[#5f5e5e] hover:text-[#1c1c18] transition-colors"
+                          className="p-1 text-[#5f5e5e] hover:text-[#1c1c18] transition-all duration-200 cursor-pointer active:scale-105"
                         >
                           <Plus className="w-3 h-3" />
                         </button>
@@ -144,7 +144,7 @@ export default function CartPage() {
                   <span className="font-serif text-2xl text-[#111]">₹{cartTotal > 2000 ? cartTotal : cartTotal + 100}</span>
                 </div>
 
-                <button className="w-full bg-[#1c1c18] text-white hover:bg-[#775a19] transition-colors duration-500 py-4 px-6 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2">
+                <button className="w-full bg-[#1c1c18] text-white hover:bg-[#775a19] transition-all duration-200 cursor-pointer active:scale-105 py-4 px-6 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2">
                   Proceed to Checkout <ArrowRight className="w-4 h-4" />
                 </button>
               </div>

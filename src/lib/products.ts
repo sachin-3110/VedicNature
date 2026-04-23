@@ -16,11 +16,12 @@ export interface Product {
   personality?: string;
   reviews?: number;
   rating?: number;
+  stock?: number;
 }
 
 export const PRODUCTS: Product[] = [
   { id: 101, name: "Divine Rose", category: "Floral Attar", price: 899, image: "/vedicnaturecompressedimages/vedicNature/divineroseattar.webp", bestSeller: true, notes: { top: "Fresh Rose Petals", heart: "Damascus Rose", base: "White Musk" }, description: "A pure, intoxicating essence of freshly bloomed roses at dawn. Perfect for evoking timeless romance and grace.", longevity: "8-10 Hours", projection: "Moderate to High", personality: "Romantic, Graceful, Classic", reviews: 124, rating: 4.9 },
-  { id: 102, name: "Jasmine", category: "Floral Attar", price: 799, image: "/vedicnaturecompressedimages/vedicNature/jasmineattar.webp", bestSeller: false, notes: { top: "White Jasmine", heart: "Ylang Ylang", base: "Soft Amber" }, description: "The sweet, nocturnal magic of night-blooming jasmine.", longevity: "6-8 Hours", projection: "Moderate", personality: "Elegant, Sensual, Calm", reviews: 89, rating: 4.7 },
+  { id: 102, name: "Jasmine", category: "Floral Attar", price: 799, image: "/vedicnaturecompressedimages/vedicNature/jasmineattar.webp", bestSeller: false, notes: { top: "White Jasmine", heart: "Ylang Ylang", base: "Soft Amber" }, description: "The sweet, nocturnal magic of night-blooming jasmine.", longevity: "6-8 Hours", projection: "Moderate", personality: "Elegant, Sensual, Calm", reviews: 89, rating: 4.7, stock: 0 },
   { id: 103, name: "Bela Floral", category: "Floral Attar", price: 699, image: "/vedicnaturecompressedimages/vedicNature/belafloralattar.webp", bestSeller: false, notes: { top: "Bela Flower", heart: "Tuberose", base: "Sandalwood" }, description: "A delicate and creamy floral scent reminiscent of Indian wedding festivities.", longevity: "7-9 Hours", projection: "High", personality: "Joyful, Traditional, Bright", reviews: 56, rating: 4.6 },
   { id: 104, name: "Sweet Rose", category: "Floral Attar", price: 850, image: "/vedicnaturecompressedimages/vedicNature/sweetroseattar.webp", bestSeller: false },
   { id: 105, name: "Night Queen", category: "Floral Attar", price: 950, image: "/vedicnaturecompressedimages/vedicNature/nightqueenattar.webp", bestSeller: true, notes: { top: "Night Blooming Jasmine", heart: "Lotus", base: "Dark Woods" }, description: "An enigmatic and seductive fragrance that truly comes alive after dusk.", longevity: "10-12 Hours", projection: "Strong", personality: "Mysterious, Bold, Seductive", reviews: 210, rating: 4.8 },
@@ -34,7 +35,7 @@ export const PRODUCTS: Product[] = [
   { id: 204, name: "Divine Oudh", category: "Oudh", price: 1699, image: "/vedicnaturecompressedimages/vedicNature/divineoudhattar.webp", bestSeller: false },
   { id: 205, name: "Honey Oudh", category: "Oudh", price: 1599, image: "/vedicnaturecompressedimages/vedicNature/honeyoudhattar.webp", bestSeller: false },
   { id: 206, name: "Rose Oudh", category: "Oudh", price: 1450, image: "/vedicnaturecompressedimages/vedicNature/roseoudhattar.webp", bestSeller: false },
-  { id: 207, name: "White Oudh", category: "Oudh", price: 1299, image: "/vedicnaturecompressedimages/vedicNature/whiteoudh.webp", bestSeller: false, notes: { top: "Citrus", heart: "White Oudh", base: "Amber" }, description: "A softer, more approachable take on Oudh with bright citrus openings.", longevity: "8-10 Hours", projection: "Moderate", personality: "Sophisticated, Modern, Clean", reviews: 128, rating: 4.5 },
+  { id: 207, name: "White Oudh", category: "Oudh", price: 1299, image: "/vedicnaturecompressedimages/vedicNature/whiteoudh.webp", bestSeller: false, notes: { top: "Citrus", heart: "White Oudh", base: "Amber" }, description: "A softer, more approachable take on Oudh with bright citrus openings.", longevity: "8-10 Hours", projection: "Moderate", personality: "Sophisticated, Modern, Clean", reviews: 128, rating: 4.5, stock: 0 },
   { id: 208, name: "Vrindaban Oudh", category: "Oudh", price: 1750, image: "/vedicnaturecompressedimages/vedicNature/vrindabaoudhattar.webp", bestSeller: false },
 
   { id: 301, name: "Kesar Chandan", category: "Signature", price: 1199, image: "/vedicnaturecompressedimages/vedicNature/kesarchandanattar.webp", bestSeller: true, notes: { top: "Saffron", heart: "Spices", base: "Mysore Sandalwood" }, description: "A regal blend of pure saffron and creamy sandalwood, historically reserved for royalty.", longevity: "10-12 Hours", projection: "Strong", personality: "Regal, Warm, Spiritual", reviews: 276, rating: 4.9 },
@@ -54,5 +55,6 @@ export const PRODUCTS: Product[] = [
   projection: p.projection || "Moderate",
   personality: p.personality || "Elegant, Timeless, Luxurious",
   reviews: p.reviews || Math.floor(Math.random() * 100) + 20,
-  rating: p.rating || parseFloat((Math.random() * 0.5 + 4.5).toFixed(1))
+  rating: p.rating || parseFloat((Math.random() * 0.5 + 4.5).toFixed(1)),
+  stock: p.stock !== undefined ? p.stock : 10
 }));

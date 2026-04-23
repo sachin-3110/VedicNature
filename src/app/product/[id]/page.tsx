@@ -44,6 +44,13 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               fill
               className="object-contain p-8 md:p-16 transition-transform duration-700 ease-out group-hover:scale-105"
             />
+            {product.stock === 0 && (
+              <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+                <span className="bg-[#1c1c18] text-white text-sm uppercase tracking-widest px-6 py-2 rounded-sm font-medium">
+                  Out of Stock
+                </span>
+              </div>
+            )}
           </div>
 
           {/* Details */}
@@ -76,15 +83,23 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
             {/* CTA */}
             <div className="flex flex-row gap-4 mb-14 w-full md:w-3/4">
-              <button 
-                onClick={() => addToCart(product)}
-                className="flex-1 bg-[#1c1c18] text-white hover:bg-[#775a19] transition-colors duration-500 py-4 px-8 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2"
+              <button
+                disabled={product.stock === 0}
+                onClick={() => {
+                  if (product.stock !== 0) {
+                    addToCart(product);
+                  }
+                }}
+                className={`flex-1 text-white py-4 px-8 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer active:scale-105 ${product.stock === 0
+                    ? 'bg-[#d1c5b4] !cursor-not-allowed text-[#7f7667] active:!scale-100'
+                    : 'bg-[#1c1c18] hover:bg-[#775a19]'
+                  }`}
               >
-                Add to Cart — ₹{product.price}
+                {product.stock === 0 ? 'Out of Stock' : `Add to Cart — ₹${product.price}`}
               </button>
-              <button 
+              <button
                 onClick={() => isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product)}
-                className="flex-none w-[52px] h-[52px] rounded-full border border-[#d1c5b4] flex items-center justify-center text-[#775a19] hover:bg-[#775a19] hover:text-white transition-colors duration-300 group/heart" 
+                className="flex-none w-[52px] h-[52px] rounded-full border border-[#d1c5b4] flex items-center justify-center text-[#775a19] hover:bg-[#775a19] hover:text-white transition-all duration-200 cursor-pointer active:scale-105 group/heart"
                 aria-label="Add to wishlist"
               >
                 <Heart className={`w-5 h-5 transition-colors ${isInWishlist(product.id) ? 'fill-[#775a19] text-[#775a19] hover:fill-white hover:text-white' : 'group-hover/heart:fill-current'}`} />
@@ -167,7 +182,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <section className="mb-10 border-t border-[#d1c5b4]/40 pt-20">
+          <section className="mb-10 border-t border-[#d1c5b4]/40 pt-10">
             <h2 className="text-3xl font-serif text-[#111] mb-12 text-center">You May Also Like</h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
               {relatedProducts.map(rp => (

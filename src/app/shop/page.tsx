@@ -166,11 +166,19 @@ export default function ShopPage() {
                             addToWishlist(product);
                           }
                         }}
-                        className="absolute top-2 right-2 z-20 p-2 bg-white/50 backdrop-blur-sm hover:bg-white rounded-full transition-all group/heart"
+                        className="absolute top-2 right-2 z-20 p-2 bg-white/50 backdrop-blur-sm hover:bg-white rounded-full transition-all duration-200 active:scale-105 cursor-pointer group/heart"
                         aria-label="Add to wishlist"
                       >
                         <Heart className={`w-4 h-4 transition-colors ${isInWishlist(product.id) ? 'fill-[#775a19] text-[#775a19]' : 'text-[#775a19] group-hover/heart:fill-[#775a19]'}`} />
                       </button>
+
+                      {product.stock === 0 && (
+                        <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+                          <span className="bg-[#1c1c18] text-white text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-sm font-medium">
+                            Out of Stock
+                          </span>
+                        </div>
+                      )}
 
                       <Image
                         src={product.image}

@@ -22,7 +22,7 @@ export default function WishlistPage() {
     <main className="min-h-screen bg-[#fcf9f3] pt-32 pb-20 font-sans text-[#1c1c18]">
       <div className="w-full max-w-7xl mx-auto px-6 md:px-12">
         <h1 className="text-4xl md:text-5xl font-serif text-[#111] mb-12 tracking-tight border-b border-[#d1c5b4]/40 pb-6">Your Wishlist</h1>
-        
+
         {wishlist.length === 0 ? (
           <div className="flex flex-col items-center text-center py-20">
             <div className="w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center mb-6">
@@ -32,8 +32,8 @@ export default function WishlistPage() {
             <p className="text-[#5f5e5e] max-w-lg mb-10">
               Explore our collection and add your favorite botanical fragrances to your wishlist.
             </p>
-            <Link 
-              href="/shop" 
+            <Link
+              href="/shop"
               className="bg-[#1c1c18] text-white hover:bg-[#775a19] transition-colors duration-500 py-4 px-10 rounded-full uppercase tracking-[0.2em] text-xs font-medium"
             >
               Explore Collection
@@ -50,18 +50,26 @@ export default function WishlistPage() {
                       src={product.image}
                       alt={product.name}
                       fill
-                      className="object-contain p-8 transition-transform duration-700 ease-out group-hover:scale-110"
+                      className="object-cover p-8 transition-transform duration-700 ease-out group-hover:scale-110"
                     />
+                    
+                    {product.stock === 0 && (
+                      <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
+                        <span className="bg-[#1c1c18] text-white text-[10px] uppercase tracking-widest px-3 py-1.5 rounded-sm font-medium">
+                          Out of Stock
+                        </span>
+                      </div>
+                    )}
                   </Link>
-                  <button 
+                  <button
                     onClick={() => removeFromWishlist(product.id)}
-                    className="absolute top-4 right-4 z-10 p-2.5 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full transition-all text-[#5f5e5e] hover:text-red-500 shadow-sm"
+                    className="absolute top-4 right-4 z-10 p-2.5 bg-white/80 backdrop-blur-sm hover:bg-white rounded-full transition-all duration-200 active:scale-105 cursor-pointer text-[#5f5e5e] hover:text-red-500 shadow-sm"
                     aria-label="Remove from wishlist"
                   >
                     <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
-                
+
                 {/* Info Area */}
                 <div className="flex flex-col p-6 flex-1">
                   <span className="text-[10px] text-[#7f7667] uppercase tracking-[0.2em] mb-2 block">{product.category}</span>
@@ -69,16 +77,23 @@ export default function WishlistPage() {
                     <h3 className="text-lg font-serif text-[#1c1c18] hover:text-[#775a19] transition-colors mb-2">{product.name}</h3>
                   </Link>
                   <p className="text-base font-medium mb-6">₹{product.price}</p>
-                  
+
                   <div className="mt-auto pt-4 border-t border-[#d1c5b4]/30">
-                    <button 
+                    <button
+                      disabled={product.stock === 0}
                       onClick={() => {
-                        addToCart(product);
-                        removeFromWishlist(product.id);
+                        if (product.stock !== 0) {
+                          addToCart(product);
+                          removeFromWishlist(product.id);
+                        }
                       }}
-                      className="w-full bg-[#fcf9f3] text-[#1c1c18] border border-[#d1c5b4] hover:bg-[#1c1c18] hover:text-white transition-colors duration-300 py-3 px-4 rounded-full uppercase tracking-widest text-[10px] font-medium flex items-center justify-center gap-2"
+                      className={`w-full border py-3 px-4 rounded-full uppercase tracking-widest text-[10px] font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer active:scale-105 ${
+                        product.stock === 0 
+                          ? 'bg-[#e5e2dc] text-[#7f7667] border-[#d1c5b4] !cursor-not-allowed active:!scale-100'
+                          : 'bg-[#fcf9f3] text-[#1c1c18] border-[#d1c5b4] hover:bg-[#1c1c18] hover:text-white'
+                      }`}
                     >
-                      <ShoppingBag className="w-4 h-4" /> Move to Cart
+                      <ShoppingBag className="w-4 h-4" /> {product.stock === 0 ? 'Out of Stock' : 'Move to Cart'}
                     </button>
                   </div>
                 </div>
