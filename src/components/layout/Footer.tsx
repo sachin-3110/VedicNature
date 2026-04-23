@@ -69,6 +69,22 @@ export default function Footer() {
                 Newsletter
               </Link>
             </li>
+            <li>
+              <Link
+                href="/terms"
+                className="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              >
+                Terms & Conditions
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/privacy"
+                className="font-sans text-[11px] uppercase tracking-[0.1em] text-[#5f5e5e] opacity-60 hover:text-[#775a19] hover:opacity-100 transition-all"
+              >
+                Privacy Policy
+              </Link>
+            </li>
           </ul>
         </div>
 
