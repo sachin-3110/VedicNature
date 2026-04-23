@@ -17,9 +17,14 @@ const manrope = Manrope({
   subsets: ["latin"],
 });
 
+import { StoreProvider } from "@/contexts/StoreContext";
+
 export const metadata: Metadata = {
   title: "Vedic Nature | Silent Luxury Fragrance",
   description: "An editorial exploration of botanical purity and architectural fragrance design.",
+  icons: {
+    icon: '/favicon.webp',
+  },
 };
 
 export default function RootLayout({
@@ -39,9 +44,11 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-background">
-        <Navbar />
-        <main className="flex-1 w-full flex-col">{children}</main>
-        <Footer />
+        <StoreProvider>
+          <Navbar />
+          <main className="flex-1 w-full flex-col">{children}</main>
+          <Footer />
+        </StoreProvider>
       </body>
     </html>
   );

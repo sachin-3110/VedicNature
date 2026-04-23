@@ -3,21 +3,12 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { Filter, X, ChevronDown, SlidersHorizontal } from "lucide-react";
+import { Filter, X, ChevronDown, SlidersHorizontal, Heart } from "lucide-react";
 
-// --- Mock Data ---
-const MOCK_PRODUCTS = [
-  { id: 1, name: "24K Gold Oud", category: "Incense Sticks", price: 499, image: "/homepageimg/24-k-gold-oud.webp", bestSeller: true },
-  { id: 2, name: "Lavender Breeze", category: "Dhoop", price: 299, image: "/homepageimg/lavender.webp", bestSeller: false },
-  { id: 3, name: "Mogra Blossom", category: "Essential Oils", price: 899, image: "/homepageimg/mogra-portrait.webp", bestSeller: true },
-  { id: 4, name: "Real Kesar Premium", category: "Incense Sticks", price: 599, image: "/homepageimg/real-kesar.webp", bestSeller: false },
-  { id: 5, name: "Sandal Bliss", category: "Attars", price: 1299, image: "/homepageimg/sandal-bliss.webp", bestSeller: true },
-  { id: 6, name: "Royal Rose Nature", category: "Dhoop", price: 349, image: "/homepageimg/lavender.webp", bestSeller: false }, 
-  { id: 7, name: "Mystic Jasmine", category: "Essential Oils", price: 699, image: "/homepageimg/mogra-portrait.webp", bestSeller: false },
-  { id: 8, name: "Golden Sandalwood", category: "Incense Sticks", price: 450, image: "/homepageimg/sandal-bliss.webp", bestSeller: false },
-];
+import { PRODUCTS } from "@/lib/products";
+import { useStore } from "@/contexts/StoreContext";
 
-const CATEGORIES = ["All", "Incense Sticks", "Dhoop", "Essential Oils", "Attars", "Gifts"];
+const CATEGORIES = ["All", "Floral Attar", "Oudh", "Signature"];
 const SORT_OPTIONS = [
   { label: "Featured", value: "featured" },
   { label: "Price: Low to High", value: "price_asc" },
@@ -30,6 +21,7 @@ export default function ShopPage() {
   const [sortBy, setSortBy] = useState("featured");
   const [isMobileFilterOpen, setIsMobileFilterOpen] = useState(false);
   const [isSortDropdownOpen, setIsSortDropdownOpen] = useState(false);
+  const { isInWishlist, addToWishlist, removeFromWishlist } = useStore();
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -46,7 +38,7 @@ export default function ShopPage() {
   // Derived state for products
   const filteredAndSortedProducts = useMemo(() => {
     // 1. Filter
-    let result = MOCK_PRODUCTS.filter((product) => {
+    let result = PRODUCTS.filter((product) => {
       if (selectedCategory === "All") return true;
       return product.category === selectedCategory;
     });
@@ -78,21 +70,16 @@ export default function ShopPage() {
   const selectedSortLabel = SORT_OPTIONS.find(opt => opt.value === sortBy)?.label;
 
   return (
-    <div className="min-h-screen bg-[#fcf9f3] text-[#1c1c18] pt-24 pb-16 font-sans">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        
+    <div className="min-h-screen  flex justify-center items-center bg-[#fcf9f3] text-[#1c1c18] pt-24 pb-16 font-sans">
+      <div className="w-full px-4 sm:px-6 lg:px-8 max-w-7xl">
+
         {/* Header Section */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-6 border-b border-[#e5e2dc]">
-          <div>
-            <h1 className="text-4xl md:text-5xl font-serif text-[#111] mb-2 tracking-tight">Our Collection</h1>
-            <p className="text-[#5f5e5e] text-sm md:text-base tracking-wide max-w-lg">
-              Discover our delicately crafted range of natural fragrances, rooted in ancient traditions.
-            </p>
-          </div>
-          
+
+
           {/* Mobile Bar: Filter button & items count */}
           <div className="flex items-center justify-between mt-6 md:hidden">
-            <button 
+            <button
               onClick={() => setIsMobileFilterOpen(true)}
               className="flex items-center gap-2 text-sm uppercase tracking-widest border border-[#d1c5b4] px-4 py-2 rounded-full font-medium"
             >
@@ -106,7 +93,7 @@ export default function ShopPage() {
           <div className="hidden md:flex items-center gap-4">
             <span className="text-sm text-[#7f7667]">{filteredAndSortedProducts.length} Results</span>
             <div className="relative">
-              <button 
+              <button
                 onClick={() => setIsSortDropdownOpen(!isSortDropdownOpen)}
                 className="flex items-center gap-2 text-sm uppercase tracking-widest border border-[#d1c5b4] px-5 py-2.5 rounded-full font-medium hover:bg-[#f0eee8] transition-colors"
               >
@@ -120,9 +107,8 @@ export default function ShopPage() {
                     <button
                       key={option.value}
                       onClick={() => handleSortSelect(option.value)}
-                      className={`w-full text-left px-4 py-3 text-sm transition-colors ${
-                        sortBy === option.value ? 'bg-[#f6f3ed] font-medium text-[#775a19]' : 'text-[#4e4639] hover:bg-[#fcf9f3]'
-                      }`}
+                      className={`w-full text-left px-4 py-3 text-sm transition-colors ${sortBy === option.value ? 'bg-[#f6f3ed] font-medium text-[#775a19]' : 'text-[#4e4639] hover:bg-[#fcf9f3]'
+                        }`}
                     >
                       {option.label}
                     </button>
@@ -143,16 +129,14 @@ export default function ShopPage() {
                   <li key={category}>
                     <button
                       onClick={() => setSelectedCategory(category)}
-                      className={`text-sm w-full text-left transition-colors flex justify-between items-center group ${
-                        selectedCategory === category 
-                          ? 'text-[#775a19] font-medium' 
-                          : 'text-[#5f5e5e] hover:text-[#1c1c18]'
-                      }`}
+                      className={`text-sm w-full text-left transition-colors flex justify-between items-center group ${selectedCategory === category
+                        ? 'text-[#775a19] font-medium'
+                        : 'text-[#5f5e5e] hover:text-[#1c1c18]'
+                        }`}
                     >
                       {category}
-                      <span className={`w-1.5 h-1.5 rounded-full transition-transform duration-300 ${
-                        selectedCategory === category ? 'bg-[#775a19] scale-100' : 'bg-transparent scale-0 group-hover:bg-[#d1c5b4] group-hover:scale-100'
-                      }`} />
+                      <span className={`w-1.5 h-1.5 rounded-full transition-transform duration-300 ${selectedCategory === category ? 'bg-[#775a19] scale-100' : 'bg-transparent scale-0 group-hover:bg-[#d1c5b4] group-hover:scale-100'
+                        }`} />
                     </button>
                   </li>
                 ))}
@@ -172,6 +156,22 @@ export default function ShopPage() {
                           Best Seller
                         </div>
                       )}
+                      
+                      <button 
+                        onClick={(e) => {
+                          e.preventDefault();
+                          if (isInWishlist(product.id)) {
+                            removeFromWishlist(product.id);
+                          } else {
+                            addToWishlist(product);
+                          }
+                        }}
+                        className="absolute top-2 right-2 z-20 p-2 bg-white/50 backdrop-blur-sm hover:bg-white rounded-full transition-all group/heart"
+                        aria-label="Add to wishlist"
+                      >
+                        <Heart className={`w-4 h-4 transition-colors ${isInWishlist(product.id) ? 'fill-[#775a19] text-[#775a19]' : 'text-[#775a19] group-hover/heart:fill-[#775a19]'}`} />
+                      </button>
+
                       <Image
                         src={product.image}
                         alt={product.name}
@@ -192,7 +192,7 @@ export default function ShopPage() {
                 <SlidersHorizontal className="w-12 h-12 text-[#d1c5b4] mb-4" />
                 <h3 className="text-xl font-serif mb-2">No products found</h3>
                 <p className="text-[#5f5e5e]">Try adjusting your filters to find what you're looking for.</p>
-                <button 
+                <button
                   onClick={() => setSelectedCategory('All')}
                   className="mt-6 text-sm uppercase tracking-widest border-b border-[#1c1c18] pb-1 hover:text-[#775a19] hover:border-[#775a19] transition-colors"
                 >
@@ -206,29 +206,27 @@ export default function ShopPage() {
 
       {/* Mobile Filter Modal */}
       {/* Overlay */}
-      <div 
-        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${
-          isMobileFilterOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+      <div
+        className={`fixed inset-0 bg-black/40 backdrop-blur-sm z-40 transition-opacity duration-300 md:hidden ${isMobileFilterOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setIsMobileFilterOpen(false)}
       />
-      
+
       {/* Drawer */}
-      <div 
-        className={`fixed inset-y-0 right-0 w-full sm:w-[400px] bg-[#fcf9f3] z-50 transform transition-transform duration-500 ease-in-out md:hidden flex flex-col ${
-          isMobileFilterOpen ? 'translate-x-0' : 'translate-x-full'
-        }`}
+      <div
+        className={`fixed inset-y-0 right-0 w-full sm:w-[400px] bg-[#fcf9f3] z-50 transform transition-transform duration-500 ease-in-out md:hidden flex flex-col ${isMobileFilterOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
       >
         <div className="flex items-center justify-between p-6 border-b border-[#e5e2dc]">
           <h2 className="text-xl font-serif">Filter & Sort</h2>
-          <button 
+          <button
             onClick={() => setIsMobileFilterOpen(false)}
             className="p-2 -mr-2 bg-[#f0eee8] rounded-full hover:bg-[#e5e2dc] transition-colors"
           >
             <X className="w-5 h-5 text-[#4e4639]" />
           </button>
         </div>
-        
+
         <div className="flex-1 overflow-y-auto p-6">
           {/* Sort Section */}
           <div className="mb-10">
@@ -236,15 +234,14 @@ export default function ShopPage() {
             <div className="space-y-3">
               {SORT_OPTIONS.map((option) => (
                 <label key={option.value} className="flex items-center gap-3 cursor-pointer group">
-                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${
-                    sortBy === option.value ? 'border-[#775a19] bg-[#775a19]' : 'border-[#d1c5b4] group-hover:border-[#775a19]'
-                  }`}>
+                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center transition-colors ${sortBy === option.value ? 'border-[#775a19] bg-[#775a19]' : 'border-[#d1c5b4] group-hover:border-[#775a19]'
+                    }`}>
                     {sortBy === option.value && <div className="w-2 h-2 rounded-full bg-white" />}
                   </div>
-                  <input 
-                    type="radio" 
-                    name="sort" 
-                    value={option.value} 
+                  <input
+                    type="radio"
+                    name="sort"
+                    value={option.value}
                     checked={sortBy === option.value}
                     onChange={(e) => setSortBy(e.target.value)}
                     className="hidden"
@@ -265,11 +262,10 @@ export default function ShopPage() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`text-left text-base py-2 border-b transition-colors ${
-                    selectedCategory === category 
-                      ? 'border-[#775a19] text-[#775a19] font-medium' 
-                      : 'border-transparent text-[#4e4639] hover:text-[#1c1c18]'
-                  }`}
+                  className={`text-left text-base py-2 border-b transition-colors ${selectedCategory === category
+                    ? 'border-[#775a19] text-[#775a19] font-medium'
+                    : 'border-transparent text-[#4e4639] hover:text-[#1c1c18]'
+                    }`}
                 >
                   {category}
                 </button>
@@ -279,7 +275,7 @@ export default function ShopPage() {
         </div>
 
         <div className="p-6 border-t border-[#e5e2dc] bg-white sticky bottom-0">
-          <button 
+          <button
             onClick={() => setIsMobileFilterOpen(false)}
             className="w-full bg-[#5f5e5e] text-white py-4 rounded-full text-xs uppercase tracking-[0.2em] font-medium hover:bg-[#1c1c18] transition-colors"
           >

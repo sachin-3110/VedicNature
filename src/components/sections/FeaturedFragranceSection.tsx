@@ -11,19 +11,19 @@ const FeaturedAssets = {
 export function FeaturedFragranceSection() {
   return (
     <section className="bg-surface-container py-16">
-      <div className="flex h-[80%] flex-col md:flex-row">
-        <div className="flex flex-col justify-center items-center w-full sm:w-1/2">
-          <div className="w-full h-full md:h-[90%] bg-white relative shadow-lg">
+      <div className="flex items-center   flex-col md:flex-row ">
+        <div className="flex m-6   h-[550px] flex-col justify-center items-center w-full sm:w-1/2">
+          <div className="w-full h-full relative ">
             <Image
               alt="Signature Scent"
-              className="w-full h-full object-cover p-4 sm:p-10"
+              className="w-full h-full object-contain p-4"
               src={FeaturedAssets.sandalBliss}
               width={500}
               height={500}
             />
           </div>
         </div>
-        <div className="p-6 sm:p-4 w-full md:w-1/2 flex flex-col items-center justify-center">
+        <div className="p-6 sm:p-4 h-full flex justify-center items-center w-full md:w-1/2   flex flex-col items-start justify-center">
           <div>
             <Label className="mb-4 text-2xl tracking-[0.5em]">Featured Fragrance</Label>
             <h2 className="font-headline text-4xl sm:text-5xl text-primary/80 mb-4 italic tracking-tighter">
@@ -38,7 +38,7 @@ export function FeaturedFragranceSection() {
             <NoteList top="Ginger" heart="Iris" base="Oud" />
 
             <div className="flex items-center gap-10">
-              <Button variant="primary">Sandal Bliss — $240</Button>
+              <Button variant="primary">Sandal Bliss — ₹240</Button>
             </div>
           </div>
         </div>

@@ -2,11 +2,19 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useStore } from '@/contexts/StoreContext';
 
 export default function Navbar() {
   const NavMenuItem = ["collections", "about", "shop"];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { cart, wishlist, isLoaded } = useStore();
+  const cartItemCount = cart.reduce((total, item) => total + item.quantity, 0);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <header className="fixed top-0 w-full z-50 bg-[#fcf9f3]/70 backdrop-blur-md">
@@ -40,12 +48,24 @@ export default function Navbar() {
           <button aria-label="Search" className="text-[#5f5e5e] hover:opacity-80 transition-opacity">
             <span className="material-symbols-outlined">search</span>
           </button>
-          <button aria-label="Cart" className="text-[#5f5e5e] hover:opacity-80 transition-opacity relative">
+          
+          <Link href="/wishlist" aria-label="Wishlist" className="text-[#5f5e5e] hover:opacity-80 transition-opacity flex items-center relative">
+            <span className="material-symbols-outlined">favorite</span>
+            {mounted && wishlist.length > 0 && (
+              <span className="absolute -top-1 -right-1 text-[8px] bg-[#775a19] text-white w-3 h-3 flex items-center justify-center rounded-full">
+                {wishlist.length}
+              </span>
+            )}
+          </Link>
+
+          <Link href="/cart" aria-label="Cart" className="text-[#5f5e5e] hover:opacity-80 transition-opacity flex items-center relative">
             <span className="material-symbols-outlined">shopping_bag</span>
-            <span className="absolute -top-1 -right-1 text-[8px] bg-secondary text-white w-3 h-3 flex items-center justify-center rounded-full">
-              0
-            </span>
-          </button>
+            {mounted && cartItemCount > 0 && (
+              <span className="absolute -top-1 -right-1 text-[8px] bg-[#775a19] text-white w-3 h-3 flex items-center justify-center rounded-full">
+                {cartItemCount}
+              </span>
+            )}
+          </Link>
 
           <button 
             aria-label="Menu" 
