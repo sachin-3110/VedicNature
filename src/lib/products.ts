@@ -54,5 +54,5 @@ export const PRODUCTS: Product[] = [
   projection: p.projection || "Moderate",
   personality: p.personality || "Elegant, Timeless, Luxurious",
   reviews: p.reviews || Math.floor(Math.random() * 100) + 20,
-  rating: p.rating || (Math.random() * 0.5 + 4.5).toFixed(1)
+  rating: p.rating || parseFloat((Math.random() * 0.5 + 4.5).toFixed(1))
 }));
