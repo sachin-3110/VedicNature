@@ -41,14 +41,14 @@ export const PRODUCTS: Product[] = [
   { id: 204, name: "Blue Oudh", category: "Oudh", price: 1399, image: "/vedicnaturecompressedimages/vedicNature/blueoudhattar.webp", bestSeller: false },
   { id: 205, name: "Kesar Chandan", category: "Signature", price: 1199, image: "/vedicnaturecompressedimages/vedicNature/kesarchandanattar.webp", bestSeller: false },
   { id: 206, name: "Mysore Sandal", category: "Signature", price: 1099, image: "/vedicnaturecompressedimages/vedicNature/mysoresandalattar.webp", bestSeller: false }
-].map(p => ({
+].map((p: any) => ({
   ...p,
   notes: p.notes || { top: "Botanical Essence", heart: "Floral Accords", base: "Amber & Musk" },
   description: p.description || "An exquisite distillation representing the finest elements of botanical luxury.",
   longevity: p.longevity || "8-10 Hours",
   projection: p.projection || "Moderate",
   personality: p.personality || "Elegant, Timeless",
-  reviews: p.reviews || Math.floor(Math.random() * 100) + 20,
-  rating: p.rating || parseFloat((Math.random() * 0.5 + 4.5).toFixed(1)),
+  reviews: p.reviews || 42,
+  rating: p.rating || 4.8,
   stock: p.stock !== undefined ? p.stock : 10
 }));
