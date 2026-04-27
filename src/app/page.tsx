@@ -2,6 +2,7 @@ import { HeroSection } from '@/components/sections/HeroSection';
 import { CinematicVideoSection } from '@/components/sections/CinematicVideoSection';
 import { FamiliesBentoSection } from '@/components/sections/FamiliesBentoSection';
 import { FeaturedFragranceSection } from '@/components/sections/FeaturedFragranceSection';
+import { TopSellingSection } from '@/components/sections/TopSellingSection';
 import { NewsletterSection } from '@/components/sections/NewsletterSection';
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <HeroSection />
       <FamiliesBentoSection />
       <FeaturedFragranceSection />
+      <TopSellingSection />
       <NewsletterSection />
     </div>
   );

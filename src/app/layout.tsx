@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Serif, Manrope, Geist } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
-import Footer from "@/components/layout/Footer";
+import ConditionalLayout from "@/components/layout/ConditionalLayout";
 import { cn } from "@/lib/utils";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
@@ -45,9 +44,9 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col bg-background text-on-background">
         <StoreProvider>
-          <Navbar />
-          <main className="flex-1 w-full flex-col">{children}</main>
-          <Footer />
+          <ConditionalLayout>
+            {children}
+          </ConditionalLayout>
         </StoreProvider>
       </body>
     </html>

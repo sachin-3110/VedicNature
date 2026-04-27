@@ -48,7 +48,7 @@ export default function Navbar() {
           <button aria-label="Search" className="text-[#5f5e5e] hover:opacity-80 transition-opacity">
             <span className="material-symbols-outlined">search</span>
           </button>
-          
+
           <Link href="/wishlist" aria-label="Wishlist" className="text-[#5f5e5e] hover:opacity-80 transition-opacity flex items-center relative">
             <span className="material-symbols-outlined">favorite</span>
             {mounted && wishlist.length > 0 && (
@@ -67,8 +67,8 @@ export default function Navbar() {
             )}
           </Link>
 
-          <button 
-            aria-label="Menu" 
+          <button
+            aria-label="Menu"
             className="text-[#5f5e5e] hover:opacity-80 transition-opacity md:hidden flex items-center"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -80,10 +80,9 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div 
-        className={`md:hidden absolute top-full left-0 w-full bg-[#fcf9f3] border-t border-[#775a19]/10 shadow-lg py-4 px-6 flex flex-col gap-4 transition-all duration-300 origin-top ${
-          isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
-        }`}
+      <div
+        className={`md:hidden absolute top-full left-0 w-full bg-[#fcf9f3] border-t border-[#775a19]/10 shadow-lg py-4 px-6 flex flex-col gap-4 transition-all duration-300 origin-top ${isMobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 pointer-events-none'
+          }`}
       >
         {NavMenuItem.map(item => (
           <Link

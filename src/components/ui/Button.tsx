@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { cn } from '@/lib/utils';
 
 type ButtonVariant = 'primary' | 'underline' | 'icon-outline' | 'ghost';
 
@@ -40,7 +41,12 @@ export function Button(props: Props) {
       'font-label text-[11px] uppercase tracking-[0.2em] text-primary hover:text-secondary',
   };
 
-  const computedClassName = `inline-flex items-center justify-center transition-all duration-200 relative overflow-hidden font-sans cursor-pointer active:scale-105 ${baseClasses} ${variants[variant]} ${className || ''}`;
+  const computedClassName = cn(
+    'inline-flex items-center justify-center transition-all duration-200 relative overflow-hidden font-sans cursor-pointer active:scale-105',
+    baseClasses,
+    variants[variant],
+    className
+  );
 
   // 👉 If it's a link
   if ('href' in props && props.href !== undefined) {

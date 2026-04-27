@@ -1,210 +1,253 @@
 "use client";
 
-import React, { use } from 'react';
+import React, { useState, use } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowLeft, Star, ShieldCheck, Truck, RotateCcw, Droplets, Wind, Sparkles, Heart } from 'lucide-react';
 import { PRODUCTS } from '@/lib/products';
 import { useStore } from '@/contexts/StoreContext';
+import { ShoppingBag, Star, ArrowLeft, Shield, Truck, RefreshCw, ChevronRight, Minus, Plus, Wind, Zap, Sparkles } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
+import { cn } from '@/lib/utils';
+import { TopSellingSection } from '@/components/sections/TopSellingSection';
+import { WishlistButton } from '@/components/ui/WishlistButton';
+import { useRouter } from 'next/navigation';
 
 export default function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = use(params);
-  const { isInWishlist, addToWishlist, removeFromWishlist, addToCart } = useStore();
-  const product = PRODUCTS.find(p => p.id === Number(id));
+  const router = useRouter();
+  const { addToCart, addToWishlist, isInWishlist, updateQuantity, cart } = useStore();
+
+  // Convert string ID from URL to number
+  const product = PRODUCTS.find(p => p.id === parseInt(id));
+
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('description');
 
   if (!product) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#fcf9f3]">
-        <h1 className="text-3xl font-serif text-[#1c1c18] mb-4">Product Not Found</h1>
-        <Link href="/shop" className="text-[#775a19] border-b border-[#775a19] pb-1 uppercase tracking-widest text-xs hover:text-[#111] transition-colors">
-          Return to Shop
-        </Link>
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#fcf9f3]">
+        <h1 className="text-4xl font-headline mb-4">Product Not Found</h1>
+        <Button href="/shop">Back to Shop</Button>
       </div>
     );
   }
 
-  // Find related products (same category, exclude current)
-  const relatedProducts = PRODUCTS.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  const isWishlisted = isInWishlist(product.id);
+
+  const handleQuantity = (type: 'inc' | 'dec') => {
+    if (type === 'inc') setQuantity(prev => prev + 1);
+    else if (type === 'dec' && quantity > 1) setQuantity(prev => prev - 1);
+  };
+
+  const handleAddToCart = () => {
+    addToCart(product, quantity);
+  };
 
   return (
-    <main className="min-h-screen bg-[#fcf9f3] pt-24 pb-20 font-sans text-[#1c1c18]">
-      <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-        {/* Breadcrumb */}
-        <Link href="/shop" className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-[#5f5e5e] hover:text-[#775a19] transition-colors mb-10">
-          <ArrowLeft className="w-4 h-4" /> Back to Collection
-        </Link>
+    <main className="bg-[#fcf9f3] pt-32 pb-24">
+      <div className="max-w-[1920px] mx-auto px-6 sm:px-12">
+        <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-primary mb-12">
+          <Link href="/" className="hover:text-primary transition-colors">Home</Link>
+          <ChevronRight className="w-3 h-3" />
+          <Link href="/shop" className="hover:text-primary transition-colors">Shop</Link>
+          <ChevronRight className="w-3 h-3" />
+          <span className="text-primary font-medium">{product.name}</span>
+        </div>
 
-        {/* Hero Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 mb-24">
-          {/* Image */}
-          <div className="relative aspect-[4/5] bg-white rounded-3xl overflow-hidden shadow-sm flex items-center justify-center p-8 group">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-contain p-8 md:p-16 transition-transform duration-700 ease-out group-hover:scale-105"
-            />
-            {product.stock === 0 && (
-              <div className="absolute inset-0 bg-white/40 backdrop-blur-[2px] z-10 flex items-center justify-center">
-                <span className="bg-[#1c1c18] text-white text-sm uppercase tracking-widest px-6 py-2 rounded-sm font-medium">
-                  Out of Stock
-                </span>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 xl:gap-24 items-start">
+          {/* Image Display */}
+          <div className="flex flex-col gap-6">
+            <div className="relative aspect-square overflow-hidden bg-stone-100 rounded-sm">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
+
+            {product.notes && (
+              <div className="grid grid-cols-3 gap-4 pt-4">
+                <div className="bg-gray-400/20 p-4 rounded-xl border border-stone-200/50 flex flex-col items-center text-center">
+                  <Wind className="w-4 h-4 text-primary/80 mb-2" />
+                  <span className="text-[15px] uppercase tracking-widest text-primary/80 mb-1">Top Notes</span>
+                  <span className="text-[12px] font-bold text-primary/80 leading-tight">{product.notes.top}</span>
+                </div>
+                <div className="bg-gray-400/20 p-4 rounded-xl border border-stone-200/50 flex flex-col items-center text-center">
+                  <Zap className="w-4 h-4 text-primary/70 mb-2" />
+                  <span className="text-[15px] tracking-widest text-primary/70 mb-1">Heart Notes</span>
+                  <span className="text-[12px] font-bold text-primary/70 leading-tight">{product.notes.heart}</span>
+                </div>
+                <div className="bg-gray-400/20 p-4 rounded-xl border border-stone-200/50 flex flex-col items-center text-center">
+                  <Sparkles className="w-4 h-4 text-primary/70 mb-2" />
+                  <span className="text-[15px] tracking-widest text-primary/70 mb-1">Base Notes</span>
+                  <span className="text-[12px] font-bold text-primary/70 leading-tight">{product.notes.base}</span>
+                </div>
               </div>
             )}
           </div>
 
-          {/* Details */}
-          <div className="flex flex-col justify-center">
-            <span className="text-xs font-sans tracking-[0.3em] text-[#775a19] uppercase mb-4 block">
-              {product.category}
-            </span>
-            <h1 className="text-4xl md:text-6xl font-serif text-[#111] mb-6 tracking-tight">
-              {product.name}
-            </h1>
-
-            {/* Reviews Summary */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="flex items-center text-[#775a19]">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className={`w-4 h-4 ${i < Math.floor(product.rating || 5) ? 'fill-current' : ''}`} />
-                ))}
+          {/* Product Info */}
+          <div className="flex flex-col">
+            <div className="mb-10">
+              <div className="flex items-center justify-between mb-4">
+                <span className="text-[10px] uppercase tracking-[0.3em] text-primary/70 font-label">{product.category}</span>
+                {product.bestSeller && (
+                  <span className="bg-primary/80 text-white text-[8px] uppercase tracking-[0.2em] px-3 py-1 rounded-full">Best Seller</span>
+                )}
               </div>
-              <span className="text-sm text-[#5f5e5e]">
-                {product.rating} ({product.reviews} reviews)
-              </span>
+              <h1 className="text-4xl md:text-5xl font-headline tracking-tight text-foreground mb-4 leading-tight">{product.name}</h1>
+              <div className="flex items-center gap-6 mb-6">
+                <p className="text-2xl font-label text-primary/70 font-medium">₹{product.price.toLocaleString()}</p>
+                <div className="h-4 w-[1px] bg-gray-700" />
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star
+                        key={i}
+                        className={cn("w-3 h-3", i < Math.floor(product.rating || 5) ? "fill-secondary text-primary" : "text-primary/40")}
+                      />
+                    ))}
+                  </div>
+                  <span className="text-[10px] uppercase tracking-widest text-secondary/60 font-label">({product.reviews || 0} Reviews)</span>
+                </div>
+              </div>
+              <p className="text-stone-600 leading-relaxed max-w-xl font-label text-sm tracking-wide">
+                {product.description}
+              </p>
             </div>
 
-            <p className="text-3xl font-serif text-[#1c1c18] mb-8">₹{product.price}</p>
+            {/* Characteristics Grid */}
+            <div className="grid grid-cols-2 gap-y-6 gap-x-12 mb-12 py-8 border-y border-stone-200/60">
+              <div>
+                <span className="text-[9px] uppercase tracking-widest text-primary-700/60 block mb-1">Longevity</span>
+                <span className="text-[11px] uppercase tracking-wider font-medium text-primary-700/60">{product.longevity}</span>
+              </div>
+              <div>
+                <span className="text-[9px] uppercase tracking-widest text-primary-700/60 block mb-1">Projection</span>
+                <span className="text-[11px] uppercase tracking-wider font-medium text-primary-700/60">{product.projection}</span>
+              </div>
+              <div>
+                <span className="text-[9px] uppercase tracking-widest text-primary-700/60 block mb-1">Personality</span>
+                <span className="text-[11px] uppercase tracking-wider font-medium text-primary-700/60">{product.personality}</span>
+              </div>
+              <div>
+                <span className="text-[9px] uppercase tracking-widest text-primary-700/60 block mb-1">Availability</span>
+                <span className={cn(
+                  "text-[11px] uppercase tracking-wider font-medium",
+                  product.stock === 0 ? "text-destructive" : "text-emerald-600"
+                )}>
+                  {product.stock === 0 ? "Out of Stock" : "In Stock"}
+                </span>
+              </div>
+            </div>
 
-            {/* Scent Summary */}
-            <p className="text-[#5f5e5e] text-lg leading-relaxed mb-10 border-l-2 border-[#775a19] pl-6 italic">
-              {product.description}
-            </p>
+            {/* Actions */}
+            <div className="space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="flex items-center h-14 px-4 border border-stone-300 rounded-sm bg-white/50">
+                  <button onClick={() => handleQuantity('dec')} className="w-8 h-8 flex items-center justify-center hover:text-secondary transition-colors"><Minus className="w-4 h-4" /></button>
+                  <span className="w-12 text-center font-label text-sm">{quantity}</span>
+                  <button onClick={() => handleQuantity('inc')} className="w-8 h-8 flex items-center justify-center hover:text-secondary transition-colors"><Plus className="w-4 h-4" /></button>
+                </div>
+                <Button
+                  onClick={handleAddToCart}
+                  disabled={product.stock === 0}
+                  className="flex-1 h-14 text-[11px] font-semibold tracking-[0.2em]"
+                >
+                  {product.stock === 0 ? "OUT OF STOCK" : "ADD TO CART"}
+                </Button>
+                <WishlistButton
+                  product={product}
+                  className="w-14 h-14 border border-stone-300 hover:border-secondary"
+                  iconClassName="w-5 h-5"
+                />
+              </div>
 
-            {/* CTA */}
-            <div className="flex flex-row gap-4 mb-14 w-full md:w-3/4">
-              <button
+              <Button
+                variant="underline"
                 disabled={product.stock === 0}
+                className="w-full h-14 bg-foreground text-white border-foreground hover:bg-black text-[11px] font-semibold tracking-[0.2em]"
                 onClick={() => {
-                  if (product.stock !== 0) {
-                    addToCart(product);
-                  }
+                  handleAddToCart();
+                  router.push('/cart');
                 }}
-                className={`flex-1 text-white py-4 px-8 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer active:scale-105 ${product.stock === 0
-                    ? 'bg-[#d1c5b4] !cursor-not-allowed text-[#7f7667] active:!scale-100'
-                    : 'bg-[#1c1c18] hover:bg-[#775a19]'
-                  }`}
               >
-                {product.stock === 0 ? 'Out of Stock' : `Add to Cart — ₹${product.price}`}
-              </button>
-              <button
-                onClick={() => isInWishlist(product.id) ? removeFromWishlist(product.id) : addToWishlist(product)}
-                className="flex-none w-[52px] h-[52px] rounded-full border border-[#d1c5b4] flex items-center justify-center text-[#775a19] hover:bg-[#775a19] hover:text-white transition-all duration-200 cursor-pointer active:scale-105 group/heart"
-                aria-label="Add to wishlist"
-              >
-                <Heart className={`w-5 h-5 transition-colors ${isInWishlist(product.id) ? 'fill-[#775a19] text-[#775a19] hover:fill-white hover:text-white' : 'group-hover/heart:fill-current'}`} />
-              </button>
+                BUY IT NOW
+              </Button>
             </div>
 
-            {/* Core Info Grid */}
-            <div className="grid grid-cols-2 gap-6 border-t border-[#d1c5b4]/40 pt-8">
-              <div>
-                <span className="text-[10px] uppercase tracking-widest text-[#7f7667] block mb-1">Longevity</span>
-                <span className="font-medium">{product.longevity}</span>
+            {/* Trust Badges */}
+            <div className="flex w-full border-2 justify-evenly my-8 py-4 border-t border-stone-400">
+              <div className="flex flex-col items-center gap-3 text-center">
+                <Shield className="w-5 h-5 text-primary/40" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-label text-primary leading-relaxed">Secure <br /> Checkout</span>
               </div>
-              <div>
-                <span className="text-[10px] uppercase tracking-widest text-[#7f7667] block mb-1">Projection</span>
-                <span className="font-medium">{product.projection}</span>
+              <div className="flex flex-col items-center gap-3 text-center">
+                <Truck className="w-5 h-5 text-primary/40" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-label text-primary leading-relaxed">Global <br /> Shipping</span>
               </div>
-              <div className="col-span-2">
-                <span className="text-[10px] uppercase tracking-widest text-[#7f7667] block mb-1">Personality</span>
-                <span className="font-medium">{product.personality}</span>
+              <div className="flex flex-col items-center gap-3 text-center">
+                <RefreshCw className="w-5 h-5  text-primary/40" />
+                <span className="text-[10px] uppercase tracking-[0.2em] font-label text-primary leading-relaxed">Easy <br /> Returns</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Notes Breakdown */}
-        <section className="py-20 border-t border-[#d1c5b4]/40">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-3xl font-serif text-[#111] mb-4">Perfume Notes</h2>
-            <p className="text-[#5f5e5e]">Discover the delicate layers of scent that slowly reveal themselves as the fragrance matures on your skin.</p>
+        {/* Detailed Info Tabs */}
+        <div className="mt-32 border-t flex flex-col justify-center items-center border-stone-200 pt-16">
+          <div className="flex gap-12 mb-12 overflow-x-auto pb-4 scrollbar-hide">
+            {['description', 'ritual', 'shipping'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={cn(
+                  "text-[10px] uppercase tracking-[0.3em] font-label pb-2 transition-all relative whitespace-nowrap",
+                  activeTab === tab ? "text-primary font-bold" : "text-primary/70 hover:text-primary"
+                )}
+              >
+                {tab}
+                {activeTab === tab && <div className="absolute bottom-0 left-0 w-full h-[1.5px] bg-primary animate-in slide-in-from-left duration-300" />}
+              </button>
+            ))}
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center max-w-5xl mx-auto">
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Wind className="w-8 h-8 text-[#775a19] mb-6" strokeWidth={1} />
-              <h3 className="text-xs uppercase tracking-widest text-[#7f7667] mb-3">Top Notes</h3>
-              <p className="font-serif text-xl md:text-2xl text-[#1c1c18]">{product.notes?.top}</p>
-              <p className="text-xs text-[#5f5e5e] mt-4 leading-relaxed">The initial impression, bright, fresh and fleeting.</p>
-            </div>
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Droplets className="w-8 h-8 text-[#775a19] mb-6" strokeWidth={1} />
-              <h3 className="text-xs uppercase tracking-widest text-[#7f7667] mb-3">Heart Notes</h3>
-              <p className="font-serif text-xl md:text-2xl text-[#1c1c18]">{product.notes?.heart}</p>
-              <p className="text-xs text-[#5f5e5e] mt-4 leading-relaxed">The core character, emerging intimately as it dries down.</p>
-            </div>
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl shadow-sm hover:shadow-md transition-shadow duration-300">
-              <Sparkles className="w-8 h-8 text-[#775a19] mb-6" strokeWidth={1} />
-              <h3 className="text-xs uppercase tracking-widest text-[#7f7667] mb-3">Base Notes</h3>
-              <p className="font-serif text-xl md:text-2xl text-[#1c1c18]">{product.notes?.base}</p>
-              <p className="text-xs text-[#5f5e5e] mt-4 leading-relaxed">The enduring foundation that subtly lingers for hours.</p>
-            </div>
+          <div className="max-w-3xl">
+            {activeTab === 'description' && (
+              <div className="animate-in fade-in duration-500">
+                <p className="text-stone-600 leading-relaxed font-label text-sm tracking-wide">
+                  {product.description}
+                  <br /><br />
+                  Vedic Nature's attars are alcohol-free, concentrated oil-based perfumes. We use ancient hydro-distillation methods (Deg-Bhapka) to capture the true botanical soul of each ingredient. This ensures a fragrance that evolves beautifully on the skin and lasts for hours.
+                </p>
+              </div>
+            )}
+            {activeTab === 'ritual' && (
+              <div className="animate-in fade-in duration-500">
+                <p className="text-stone-600 leading-relaxed font-label text-sm tracking-wide">
+                  To experience the full depth of our attars, we recommend applying a small drop to your pulse points: wrists, behind the ears, and the base of the throat.
+                  <br /><br />
+                  Avoid rubbing the fragrance into the skin as this can break down the delicate olfactory molecules. Instead, let the oil warm naturally on your skin to reveal its complex layers over time.
+                </p>
+              </div>
+            )}
+            {activeTab === 'shipping' && (
+              <div className="animate-in fade-in duration-500">
+                <p className="text-stone-600 leading-relaxed font-label text-sm tracking-wide">
+                  We offer complimentary shipping on all orders over ₹2,000. Each bottle is meticulously packed in sustainable, eco-friendly materials to ensure it reaches you in perfect condition.
+                  <br /><br />
+                  For international inquiries, please contact our concierge service.
+                </p>
+              </div>
+            )}
           </div>
-        </section>
+        </div>
+      </div>
 
-        {/* Shipping & Trust */}
-        <section className="py-12 md:py-16 border border-[#d1c5b4]/40 bg-white/40 rounded-3xl mb-24 px-8 mt-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            <div className="flex flex-col items-center text-center gap-3">
-              <Truck className="w-8 h-8 text-[#775a19]" strokeWidth={1} />
-              <div>
-                <h4 className="font-medium text-sm uppercase tracking-widest mb-1">Free Shipping</h4>
-                <p className="text-xs text-[#5f5e5e]">On all orders over ₹2000.</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center gap-3">
-              <ShieldCheck className="w-8 h-8 text-[#775a19]" strokeWidth={1} />
-              <div>
-                <h4 className="font-medium text-sm uppercase tracking-widest mb-1">100% Authentic</h4>
-                <p className="text-xs text-[#5f5e5e]">Pure, distilled botanical ingredients.</p>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center gap-3">
-              <RotateCcw className="w-8 h-8 text-[#775a19]" strokeWidth={1} />
-              <div>
-                <h4 className="font-medium text-sm uppercase tracking-widest mb-1">Easy Returns</h4>
-                <p className="text-xs text-[#5f5e5e]">7-day return policy on unused items.</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Related Products */}
-        {relatedProducts.length > 0 && (
-          <section className="mb-10 border-t border-[#d1c5b4]/40 pt-10">
-            <h2 className="text-3xl font-serif text-[#111] mb-12 text-center">You May Also Like</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-              {relatedProducts.map(rp => (
-                <Link href={`/product/${rp.id}`} key={rp.id} className="group flex flex-col cursor-pointer bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-                  <div className="relative aspect-[4/5] overflow-hidden bg-white mb-2 p-6 flex justify-center items-center">
-                    <Image
-                      src={rp.image}
-                      alt={rp.name}
-                      fill
-                      className="object-contain p-6 md:p-8 transition-transform duration-700 ease-out group-hover:scale-110"
-                    />
-                  </div>
-                  <div className="flex flex-col items-center text-center pb-8 px-4">
-                    <span className="text-[10px] text-[#7f7667] uppercase tracking-[0.2em] mb-2">{rp.category}</span>
-                    <h3 className="text-lg font-serif text-[#1c1c18] group-hover:text-[#775a19] transition-colors">{rp.name}</h3>
-                    <p className="text-sm font-medium mt-2">₹{rp.price}</p>
-                  </div>
-                </Link>
-              ))}
-            </div>
-          </section>
-        )}
+      {/* Related Products */}
+      <div className="mt-32 pt-16 border-t border-stone-200">
+        <TopSellingSection />
       </div>
     </main>
   );

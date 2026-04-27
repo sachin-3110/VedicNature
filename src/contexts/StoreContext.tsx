@@ -12,10 +12,11 @@ type StoreContextType = {
   wishlist: Product[];
   addToWishlist: (product: Product) => void;
   removeFromWishlist: (id: number) => void;
+  toggleWishlist: (product: Product) => void;
   isInWishlist: (id: number) => boolean;
 
   cart: CartItem[];
-  addToCart: (product: Product) => void;
+  addToCart: (product: Product, quantity?: number) => void;
   removeFromCart: (id: number) => void;
   updateQuantity: (id: number, quantity: number) => void;
   cartTotal: number;
@@ -33,12 +34,19 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const savedWishlist = localStorage.getItem('vedic_wishlist');
     const savedCart = localStorage.getItem('vedic_cart');
-    if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
-    if (savedCart) setCart(JSON.parse(savedCart));
+    
+    try {
+      if (savedWishlist) setWishlist(JSON.parse(savedWishlist));
+      if (savedCart) setCart(JSON.parse(savedCart));
+    } catch (e) {
+      console.error("Failed to parse cart/wishlist", e);
+    }
+    
     setIsLoaded(true);
   }, []);
 
   useEffect(() => {
+    // Only save once we've successfully loaded from localStorage
     if (isLoaded) {
       localStorage.setItem('vedic_wishlist', JSON.stringify(wishlist));
       localStorage.setItem('vedic_cart', JSON.stringify(cart));
@@ -55,19 +63,27 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
     setWishlist(wishlist.filter(p => p.id !== id));
   };
 
+  const toggleWishlist = (product: Product) => {
+    if (isInWishlist(product.id)) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+    }
+  };
+
   const isInWishlist = (id: number) => {
     return wishlist.some(p => p.id === id);
   };
 
-  const addToCart = (product: Product) => {
+  const addToCart = (product: Product, quantity: number = 1) => {
     setCart(prev => {
       const existing = prev.find(item => item.product.id === product.id);
       if (existing) {
         return prev.map(item => 
-          item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.product.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         );
       }
-      return [...prev, { product, quantity: 1 }];
+      return [...prev, { product, quantity }];
     });
   };
 
@@ -89,7 +105,7 @@ export const StoreProvider = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <StoreContext.Provider value={{
-      wishlist, addToWishlist, removeFromWishlist, isInWishlist,
+      wishlist, addToWishlist, removeFromWishlist, toggleWishlist, isInWishlist,
       cart, addToCart, removeFromCart, updateQuantity, cartTotal,
       isLoaded
     }}>

@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { LabelHTMLAttributes } from 'react';
 
-export function Label({ children, className = '' }: { children: React.ReactNode; className?: string }) {
+export function Label({ children, className = '', ...props }: LabelHTMLAttributes<HTMLLabelElement>) {
   return (
-    <span className={`font-label text-[12px] uppercase tracking-[0.4em] text-primary/70 ${className}`}>
+    <label 
+      className={`font-label text-[12px] uppercase tracking-[0.4em] text-primary/70 ${className}`}
+      {...props}
+    >
       {children}
-    </span>
+    </label>
   );
 }
