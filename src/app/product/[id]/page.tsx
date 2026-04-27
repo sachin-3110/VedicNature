@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { PRODUCTS } from '@/lib/products';
 import { useStore } from '@/contexts/StoreContext';
-import { ShoppingBag, Star, ArrowLeft, Shield, Truck, RefreshCw, ChevronRight, Minus, Plus, Wind, Zap, Sparkles } from 'lucide-react';
+import { ShoppingBag, Star, ArrowLeft, Shield, Truck, RefreshCw, ChevronRight, Minus, Plus, Wind, Zap, Sparkles, Tag } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { cn } from '@/lib/utils';
 import { TopSellingSection } from '@/components/sections/TopSellingSection';
@@ -90,7 +90,7 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
 
           {/* Product Info */}
           <div className="flex flex-col">
-            <div className="mb-10">
+            <div className="mb-4">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-[10px] uppercase tracking-[0.3em] text-primary/70 font-label">{product.category}</span>
                 {product.bestSeller && (
@@ -118,8 +118,11 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
               </p>
             </div>
 
+            {/* Promotional Offers */}
+
+
             {/* Characteristics Grid */}
-            <div className="grid grid-cols-2 gap-y-6 gap-x-12 mb-12 py-8 border-y border-stone-200/60">
+            <div className="grid grid-cols-2 gap-y-6 gap-x-12 mb-4 py-6 border-y border-stone-200/60">
               <div>
                 <span className="text-[9px] uppercase tracking-widest text-primary-700/60 block mb-1">Longevity</span>
                 <span className="text-[11px] uppercase tracking-wider font-medium text-primary-700/60">{product.longevity}</span>
@@ -140,6 +143,41 @@ export default function ProductDetailPage({ params }: { params: Promise<{ id: st
                 )}>
                   {product.stock === 0 ? "Out of Stock" : "In Stock"}
                 </span>
+              </div>
+            </div>
+
+            <div className="mb-4 space-y-2">
+              <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] font-bold text-primary/80">
+                <Tag className="w-4 h-4" />
+                Special Promotions
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="p-4 border border-stone-200 rounded-2xl bg-white/40 backdrop-blur-sm hover:border-primary/30 hover:bg-white/60 transition-all group">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary">SAVE15</span>
+                    <span className="text-[8px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-tighter">Code</span>
+                  </div>
+                  <p className="text-[10px] text-stone-600 leading-relaxed">
+                    Get 15% OFF on orders above ₹2,000. Apply at checkout.
+                  </p>
+                </div>
+                <div className="p-4 border border-stone-200 rounded-2xl bg-white/40 backdrop-blur-sm hover:border-primary/30 hover:bg-white/60 transition-all group">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary">FREE GIFT</span>
+                    <span className="text-[8px] bg-primary/10 text-primary px-2 py-0.5 rounded-full uppercase tracking-tighter">Limited</span>
+                  </div>
+                  <p className="text-[10px] text-stone-600 leading-relaxed">
+                    Free Discovery Set on all orders above ₹3,000. Auto-applies.
+                  </p>
+                </div>
+              </div>
+              <div className="p-4 border border-dashed border-stone-300 rounded-2xl bg-stone-50/50">
+                <div className="flex items-center gap-3">
+                  <Sparkles className="w-4 h-4 text-primary/40" />
+                  <p className="text-[10px] text-stone-600 leading-relaxed">
+                    <span className="font-bold text-primary">Bundle Offer:</span> Buy any 2 Attars and get a complimentary Mysore Sandalwood soap (50g).
+                  </p>
+                </div>
               </div>
             </div>
 

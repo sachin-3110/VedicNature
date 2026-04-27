@@ -14,6 +14,35 @@ export default function CartPage() {
     setMounted(true);
   }, []);
 
+  const [couponCode, setCouponCode] = useState('');
+  const [appliedCoupon, setAppliedCoupon] = useState<{ code: string; discount: number } | null>(null);
+  const [couponError, setCouponError] = useState('');
+
+  const handleApplyCoupon = () => {
+    setCouponError('');
+    if (couponCode.toUpperCase() === 'SAVE15') {
+      if (cartTotal >= 2000) {
+        const discountAmount = Math.round(cartTotal * 0.15);
+        setAppliedCoupon({ code: 'SAVE15', discount: discountAmount });
+        setCouponCode('');
+      } else {
+        setCouponError('Minimum purchase of ₹2,000 required for this coupon.');
+      }
+    } else if (couponCode.trim() === '') {
+      setCouponError('Please enter a coupon code.');
+    } else {
+      setCouponError('Invalid coupon code.');
+    }
+  };
+
+  const removeCoupon = () => {
+    setAppliedCoupon(null);
+  };
+
+  const shippingCost = cartTotal > 2000 ? 0 : 100;
+  const discountAmount = appliedCoupon ? appliedCoupon.discount : 0;
+  const finalTotal = cartTotal + shippingCost - discountAmount;
+
   if (!mounted || !isLoaded) {
     return <main className="min-h-screen bg-[#fcf9f3]" />; // minimal flash prevention
   }
@@ -130,8 +159,21 @@ export default function CartPage() {
                   </div>
                   <div className="flex justify-between items-center text-sm text-[#5f5e5e]">
                     <span>Shipping</span>
-                    <span>{cartTotal > 2000 ? 'Free' : '₹100'}</span>
+                    <span>{shippingCost === 0 ? 'Free' : `₹${shippingCost}`}</span>
                   </div>
+                  
+                  {appliedCoupon && (
+                    <div className="flex justify-between items-center text-sm text-emerald-600 font-medium">
+                      <div className="flex items-center gap-2">
+                        <span>Discount ({appliedCoupon.code})</span>
+                        <button onClick={removeCoupon} className="text-red-400 hover:text-red-600 transition-colors">
+                          <Trash2 className="w-3 h-3" />
+                        </button>
+                      </div>
+                      <span>- ₹{appliedCoupon.discount}</span>
+                    </div>
+                  )}
+
                   {cartTotal <= 2000 && (
                     <p className="text-[10px] text-[#775a19] text-right">
                       Add ₹{2000 - cartTotal} more for free shipping
@@ -139,14 +181,40 @@ export default function CartPage() {
                   )}
                 </div>
 
+                {/* Coupon Code Input */}
+                {!appliedCoupon && (
+                  <div className="mb-8 border-t border-[#d1c5b4]/20 pt-6">
+                    <div className="flex gap-2">
+                      <input 
+                        type="text" 
+                        value={couponCode}
+                        onChange={(e) => setCouponCode(e.target.value)}
+                        placeholder="Coupon Code"
+                        className="flex-1 bg-[#fcf9f3] border border-[#d1c5b4] rounded-lg px-4 py-2 text-xs focus:outline-none focus:border-[#775a19] transition-colors"
+                      />
+                      <button 
+                        onClick={handleApplyCoupon}
+                        className="bg-[#1c1c18] text-white px-4 py-2 rounded-lg text-[10px] uppercase tracking-widest font-bold hover:bg-[#775a19] transition-colors"
+                      >
+                        Apply
+                      </button>
+                    </div>
+                    {couponError && <p className="text-[10px] text-red-500 mt-2 ml-1">{couponError}</p>}
+                    <p className="text-[9px] text-[#7f7667] mt-3 ml-1 uppercase tracking-tighter">Try code: SAVE15 (Min. ₹2000)</p>
+                  </div>
+                )}
+
                 <div className="flex justify-between items-center border-t border-[#d1c5b4]/40 pt-4 mb-8">
                   <span className="font-serif text-lg">Total</span>
-                  <span className="font-serif text-2xl text-[#111]">₹{cartTotal > 2000 ? cartTotal : cartTotal + 100}</span>
+                  <span className="font-serif text-2xl text-[#111]">₹{finalTotal}</span>
                 </div>
 
-                <button className="w-full bg-[#1c1c18] text-white hover:bg-[#775a19] transition-all duration-200 cursor-pointer active:scale-105 py-4 px-6 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2">
+                <Link 
+                  href="/checkout"
+                  className="w-full bg-[#1c1c18] text-white hover:bg-[#775a19] transition-all duration-200 cursor-pointer active:scale-105 py-4 px-6 rounded-full uppercase tracking-[0.2em] text-xs font-medium flex items-center justify-center gap-2"
+                >
                   Proceed to Checkout <ArrowRight className="w-4 h-4" />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
