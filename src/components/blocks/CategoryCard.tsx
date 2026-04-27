@@ -1,5 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface CategoryCardProps {
   imageSrc: string;
@@ -11,6 +12,7 @@ interface CategoryCardProps {
   description: string;
   imageAspect?: string;
   imageObjectFit?: 'cover' | 'contain';
+  href?: string;
 }
 
 export function CategoryCard({
@@ -23,9 +25,10 @@ export function CategoryCard({
   description,
   imageAspect = 'aspect-[16/9]',
   imageObjectFit = 'cover',
+  href = '#',
 }: CategoryCardProps) {
   return (
-    <div className="group cursor-pointer">
+    <Link href={href} className="group cursor-pointer block">
       <div className={`relative overflow-hidden ${imageAspect} mb-6`} style={{ backgroundColor: imageObjectFit === 'contain' ? 'white' : 'transparent' }}>
         <Image
           src={imageSrc}
@@ -54,6 +57,6 @@ export function CategoryCard({
       <p className="font-body text-sm text-on-surface-variant px-2 mt-2 opacity-60">
         {description}
       </p>
-    </div>
+    </Link>
   );
 }

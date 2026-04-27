@@ -38,7 +38,7 @@ export function FeaturedFragranceSection() {
             <NoteList top="Ginger" heart="Iris" base="Oud" />
 
             <div className="flex items-center gap-10">
-              <Button variant="primary">Sandal Bliss — ₹240</Button>
+              <Button variant="primary" href="/product/104">Sandal Bliss — ₹240</Button>
             </div>
           </div>
         </div>

@@ -1,16 +1,43 @@
+"use client"
 import React from 'react';
 import { CategoryCard } from '@/components/blocks/CategoryCard';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 const BentoAssets = {
   lavender: "/vedicnaturecompressedimages/vedicNature/lavenderattar.webp",
   mogra: "/vedicnaturecompressedimages/vedicNature/mogra.jpg.webp",
   goldOud: "/vedicnaturecompressedimages/vedicNature/divinegoldattar.webp",
-  kesar: "/vedicnaturecompressedimages/vedicNature/realkesarattar.webp"
+  kesar: "/vedicnaturecompressedimages/vedicNature/realkesarattar.webp",
+  oud24k: "/vedicnaturecompressedimages/vedicNature/24k-gold-oud-man-image.webp",
+  parijat: "/vedicnaturecompressedimages/vedicNature/parijatattar-women.webp"
 };
 
 export function FamiliesBentoSection() {
+  const sectionRef = React.useRef<HTMLElement>(null);
+
+  React.useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.from(".bento-card", {
+        y: 60,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.15,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+        }
+      });
+    }, sectionRef);
+
+    return () => ctx.revert();
+  }, []);
+
   return (
-    <section className="py-32 px-12 max-w-screen-2xl mx-auto">
+    <section ref={sectionRef} className="py-32 px-12 max-w-screen-2xl mx-auto">
       <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
         <div>
           <h2 className="font-label text-[12px] uppercase tracking-[0.4em] text-secondary mb-4">
@@ -27,7 +54,35 @@ export function FamiliesBentoSection() {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
-        <div className="md:col-span-8">
+        <div className="md:col-span-4 md:mt-24 bento-card">
+          <CategoryCard
+            imageSrc={BentoAssets.oud24k}
+            imageAlt="24k Gold Oud"
+            titleOverlay="24K GOLD OUD"
+            titleOverlayColor="white"
+            titleOverlaySize="text-[20px]"
+            title="24k Gold Oud"
+            description="Ancient cedar, smoked oud, and vetiver root."
+            imageAspect="aspect-[3/4]"
+            href="/product/105"
+          />
+        </div>
+        <div className="md:col-span-8 bento-card">
+          <CategoryCard
+            imageSrc={BentoAssets.parijat}
+            imageAlt="Floral Notes"
+            titleOverlay="Parijat"
+            titleOverlayColor="black"
+            titleOverlaySize="text-[20px] pt-2"
+            title="Parijat"
+            description="Delicate jasmine, crushed violet, and morning rose."
+            imageAspect="aspect-[4/3]"
+            imageObjectFit="contain"
+            href="/product/112"
+          />
+        </div>
+
+        <div className="md:col-span-8 bento-card">
           <CategoryCard
             imageSrc={BentoAssets.lavender}
             imageAlt="Floral Notes"
@@ -38,9 +93,10 @@ export function FamiliesBentoSection() {
             description="Delicate jasmine, crushed violet, and morning rose."
             imageAspect="aspect-[16/9]"
             imageObjectFit="contain"
+            href="/product/101"
           />
         </div>
-        <div className="md:col-span-4 md:mt-24">
+        <div className="md:col-span-4 md:mt-24 bento-card">
           <CategoryCard
             imageSrc={BentoAssets.mogra}
             imageAlt="Woody Notes"
@@ -50,9 +106,10 @@ export function FamiliesBentoSection() {
             title="Woody & Smoke"
             description="Ancient cedar, smoked oud, and vetiver root."
             imageAspect="aspect-[3/4]"
+            href="/product/111"
           />
         </div>
-        <div className="md:col-span-4">
+        <div className="md:col-span-4 bento-card">
           <CategoryCard
             imageSrc={BentoAssets.goldOud}
             imageAlt="Oriental Notes"
@@ -62,9 +119,10 @@ export function FamiliesBentoSection() {
             title="Oriental & Spice"
             description="Warm amber, black cardamom, and vanilla bean."
             imageAspect="aspect-[3/4]"
+            href="/product/105"
           />
         </div>
-        <div className="md:col-span-8">
+        <div className="md:col-span-8 bento-card">
           <CategoryCard
             imageSrc={BentoAssets.kesar}
             imageAlt="Fresh Notes"
@@ -75,6 +133,7 @@ export function FamiliesBentoSection() {
             description="Sea salt, Sicilian citrus, and crisp linen."
             imageAspect="aspect-[16/9]"
             imageObjectFit="contain"
+            href="/product/205"
           />
         </div>
       </div>
